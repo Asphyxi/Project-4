@@ -99,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
         while(System.currentTimeMillis() -  Time < 2000){};
         middletext.setText("Analyzing");
         while(System.currentTimeMillis() -  Time < 3000){};
+        middletext.setText("Fag Detected");
+        while(System.currentTimeMillis() -  Time < 3000){};
 
     }
 }
