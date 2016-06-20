@@ -1,5 +1,6 @@
 package com.example.dennis.myapplication;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -32,34 +33,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        final Intent intent = new Intent(this, SettingsActivity.class);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         // Start/////////////////////////////////////////////////////////////////////
-
-        Button scanButton = (Button) findViewById(R.id.button);
-        status = (TextView) findViewById(R.id.scanStatusText);
-        middle = (TextView) findViewById(R.id.middleText);
-
-        scanButton.setOnClickListener(new View.OnClickListener() {
+        Button startbutton = (Button) findViewById(R.id.startbutton);
+        startbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT).show();
-                startScan(middle,status);
+                startActivity(intent);
             }
         });
-
-
-
-
 
 
     }
@@ -84,23 +68,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void startScan(TextView middletext, TextView statustext){
-        Integer Time = (int) System.currentTimeMillis();
-        statustext.setTextColor(Color.GREEN);
-        statustext.setText("Scanning...");
-        middletext.setText("Scanning...");
-
-        while(System.currentTimeMillis() -  Time < 1000){
-            Log.e("Error", "Notyet");
-        };
-        middletext.setText("Subject found");
-        while(System.currentTimeMillis() -  Time < 2000){};
-        middletext.setText("Analyzing");
-        while(System.currentTimeMillis() -  Time < 3000){};
-        middletext.setText("Fag Detected");
-        while(System.currentTimeMillis() -  Time < 3000){};
-
     }
 }
