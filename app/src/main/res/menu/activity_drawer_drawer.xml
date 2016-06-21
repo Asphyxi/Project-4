@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/fietstrommels"
+            android:title="Fietstrommels" />
+        <item
+            android:id="@+id/diefstallen"
+            android:title="Diefstallen" />
+        <item
+            android:id="@+id/locatie"
+            android:title="Locatie" />
+        <item
+            android:id="@+id/route"
+            android:title="Trommel nabij" />
+    </group>
+
+
+
+</menu>
