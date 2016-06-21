@@ -11,9 +11,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         Button startknop = (Button) findViewById(R.id.startknop);
+        startknop.setText("Ga naar de app!");
+        startknop.setWidth(400);
         final Intent toDrawer = new Intent(this, DrawerActivity.class);
 
         startknop.setOnClickListener(new View.OnClickListener() {
