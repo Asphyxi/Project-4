@@ -1,10 +1,14 @@
 package groep2.project4;
 
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,6 +23,8 @@ import android.support.v4.app.Fragment;
 public class DrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    MenuColorManager menucolormanager = new MenuColorManager();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,14 +32,7 @@ public class DrawerActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -43,6 +42,15 @@ public class DrawerActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+//        navigationView.setItemTextColor(ColorStateList.valueOf(Color.DKGRAY));
+
+        menucolormanager.FixShitAhMattieZegWollah(navigationView.getMenu().findItem(R.id.categorie1),navigationView.getMenu().findItem(R.id.categorie2),navigationView.getMenu().findItem(R.id.categorie3));
+
+
+//        MenuItem menuItem = navigationView.getMenu().findItem(R.id.categorie1);
+//        SpannableString s = new SpannableString(menuItem.getTitle());
+//        s.setSpan(new ForegroundColorSpan(Color.RED),0,s.length(),0);
+//        menuItem.setTitle(s);
     }
 
     @Override
@@ -83,23 +91,25 @@ public class DrawerActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment;
+// wat er gebeurt als je op menuitems drukt
+        if (id == R.id.fietstrommels) {fragment = new FietsTrommels();
 
-        if (id == R.id.fietstrommels) {
-            fragment = new FietsTrommels();
-            // wat er gebeurt als je op fietstrommels drukt, etc.
         } else if (id == R.id.diefstallen) { fragment = new Diefstallen();
 
         } else if (id == R.id.locatie) { fragment = new Locatie();
 
         } else if (id == R.id.route) { fragment = new Route();
 
-        } else {fragment = new FietsTrommels();}
+        } else {return false;}
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.drawer_start, fragment).commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
+
+
         return true;
     }
 }

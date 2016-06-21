@@ -12,13 +12,18 @@
 
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Ga naar de app!"
+        style="@android:style/Widget.DeviceDefault.Light.Button"
+        android:id="@+id/startknop"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="51dp"
-        android:layout_alignParentStart="false"
-        style="@android:style/Widget.DeviceDefault.Light.Button"
-        android:id="@+id/startknop" />
+        android:layout_marginBottom="32dp" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/imageView1"
+        android:src="@color/material_deep_teal_500" />
 </RelativeLayout>
