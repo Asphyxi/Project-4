@@ -24,7 +24,13 @@
         <item
             android:id="@+id/locatie"
             android:title="      Locatie" />
-
+    </group>
+    <item android:title="Kladblok"
+        android:id="@+id/categorie4"/>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/kladblok"
+            android:title="      Kladblok" />
 
 
     </group>

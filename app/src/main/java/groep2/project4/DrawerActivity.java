@@ -1,15 +1,8 @@
 package groep2.project4;
 
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -99,6 +92,8 @@ public class DrawerActivity extends AppCompatActivity
         } else if (id == R.id.locatie) { fragment = new Locatie();
 
         } else if (id == R.id.route) { fragment = new Route();
+
+        } else if (id == R.id.notepad) { fragment = new Kladblok();
 
         } else {return false;}
 
