@@ -93,7 +93,7 @@ public class DrawerActivity extends AppCompatActivity
 
         } else if (id == R.id.route) { fragment = new Route();
 
-        } else if (id == R.id.notepad) { fragment = new Kladblok();
+        } else if (id == R.id.kladblok) { fragment = new Kladblok();
 
         } else {return false;}
 
