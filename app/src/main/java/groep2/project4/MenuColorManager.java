@@ -16,7 +16,7 @@ public class MenuColorManager {
 
     }
 
-    public void FixShitAhMattieZegWollah(MenuItem ITEM1, MenuItem ITEM2, MenuItem ITEM3){
+    public void HeadingCharts(MenuItem ITEM1, MenuItem ITEM2, MenuItem ITEM3){
         SpannableString s1 = new SpannableString(ITEM1.getTitle());
         SpannableString s2 = new SpannableString(ITEM2.getTitle());
         SpannableString s3 = new SpannableString(ITEM3.getTitle());
