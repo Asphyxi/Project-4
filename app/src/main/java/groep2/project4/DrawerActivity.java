@@ -15,6 +15,10 @@ import android.support.v4.app.Fragment;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import groep2.project4.Fragments.Diefstallen;
 import groep2.project4.Fragments.FietsTrommels;
@@ -136,5 +140,15 @@ public class DrawerActivity extends AppCompatActivity
     public void onMapReady(GoogleMap googleMap) {
         //dit is de "initialize" van de map. als de map is geladen, doe dit.
 
+
+
+
+
+
+        Marker test = googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(37.7750, 122.4183))
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
+                .title("San Francisco")
+                .snippet("Population: 776733"));
     }
 }
