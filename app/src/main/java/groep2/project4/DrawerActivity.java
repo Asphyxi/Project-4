@@ -1,5 +1,6 @@
 package groep2.project4;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
@@ -8,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.Fragment;
@@ -19,6 +21,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.List;
 
 import groep2.project4.Fragments.Diefstallen;
 import groep2.project4.Fragments.FietsTrommels;
@@ -139,8 +143,8 @@ public class DrawerActivity extends AppCompatActivity
     @Override
     public void onMapReady(GoogleMap googleMap) {
         //dit is de "initialize" van de map. als de map is geladen, doe dit.
-
-
+        List<String[]> data = CSVReader.FileReader(this, "trommels.csv");
+        Log.e("CSV", data.toString());
 
 
 
