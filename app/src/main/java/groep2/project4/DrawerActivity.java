@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.Fragment;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -144,6 +145,15 @@ public class DrawerActivity extends AppCompatActivity
     public void onMapReady(GoogleMap googleMap) {
         //dit is de "initialize" van de map. als de map is geladen, doe dit.
         List<Trommel> data = CSVReader.FileReader(this, "trommels.csv");
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.909424, 4.488258),10f));
+
+        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                return false; //wat te doen als er op een marker wordt geklikt(voor set reminder)
+            }
+        });
 
         for(Trommel tromtrom:data){
             Marker test = googleMap.addMarker(new MarkerOptions()
