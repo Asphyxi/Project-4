@@ -143,16 +143,18 @@ public class DrawerActivity extends AppCompatActivity
     @Override
     public void onMapReady(GoogleMap googleMap) {
         //dit is de "initialize" van de map. als de map is geladen, doe dit.
-        List<String[]> data = CSVReader.FileReader(this, "trommels.csv");
-        Log.e("CSV", data.toString());
+        List<Trommel> data = CSVReader.FileReader(this, "trommels.csv");
+
+        for(Trommel tromtrom:data){
+            Marker test = googleMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(tromtrom.longit, tromtrom.latit))
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
+                    .title(tromtrom.Adres)
+                    .snippet("concept: distance"));
+        }
 
 
 
 
-        Marker test = googleMap.addMarker(new MarkerOptions()
-                .position(new LatLng(37.7750, 122.4183))
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
-                .title("San Francisco")
-                .snippet("Population: 776733"));
     }
 }
