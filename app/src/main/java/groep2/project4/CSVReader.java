@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CSVReader {
 
-    public void FileReader(Context myContext) {
+    public static List<String[]> FileReader(Context myContext, String filename) {
         String line;
         String cvsSplitBy = ",";
         String[] data;
@@ -19,7 +19,7 @@ public class CSVReader {
         AssetManager man = myContext.getAssets();
 
         try {
-            InputStreamReader is = new InputStreamReader(myContext.getAssets().open("trommels.csv"));
+            InputStreamReader is = new InputStreamReader(myContext.getAssets().open(filename));
             BufferedReader br = new BufferedReader(is);
 
 
@@ -31,6 +31,7 @@ public class CSVReader {
             e.printStackTrace();
         } finally {
             Log.e("Amount", "The amount is" + datalist.size());
+            return datalist;
         }
     }
 }
