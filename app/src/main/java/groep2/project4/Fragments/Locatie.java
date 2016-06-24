@@ -24,3 +24,5 @@ public class Locatie extends Fragment{
         return inflater.inflate(R.layout.locatie,container,false);
     }
 }
+
+

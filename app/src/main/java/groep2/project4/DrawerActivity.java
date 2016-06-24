@@ -137,5 +137,6 @@ public class DrawerActivity extends AppCompatActivity
     @Override
     public void onMapReady(GoogleMap googleMap) {
         //dit is de "initialize" van de map. als de map is geladen, doe dit.
+
     }
 }
