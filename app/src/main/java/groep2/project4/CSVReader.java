@@ -21,11 +21,11 @@ public class CSVReader {
         try {
             InputStreamReader is = new InputStreamReader(myContext.getAssets().open("trommels.csv"));
             BufferedReader br = new BufferedReader(is);
-
-
             while ((line = br.readLine()) != null) {
                 data = line.split(cvsSplitBy);
                 datalist.add(data);
+
+
             }
         } catch (Exception e) {
             e.printStackTrace();
