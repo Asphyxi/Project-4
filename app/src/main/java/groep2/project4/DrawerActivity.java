@@ -17,7 +17,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 
-import groep2.project4.Fragments.Diefstallen;
+
 import groep2.project4.Fragments.FietsTrommels;
 import groep2.project4.Fragments.Kladblok;
 import groep2.project4.Fragments.Locatie;
@@ -29,7 +29,7 @@ public class DrawerActivity extends AppCompatActivity
     MenuColorManager menucolormanager = new MenuColorManager();
 
     Fragment fragFietsTrommels = new FietsTrommels();
-    Fragment fragDiefstallen = new Diefstallen();
+    Fragment fragDiefstallen = new FragmentBarChart();
     Fragment fragLocatie = new Locatie();
     Fragment fragRoute = new Route();
     Fragment fragKladblok = new Kladblok();
