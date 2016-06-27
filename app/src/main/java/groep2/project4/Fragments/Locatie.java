@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -19,6 +20,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -33,14 +36,15 @@ import groep2.project4.Trommel;
 public class Locatie extends Fragment implements OnMapReadyCallback {
     Context cont;
     public SupportMapFragment sMapFragment;
+    public TextView textViewSelected;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         Log.e("Locatie.java", "onCreateView");
         cont = inflater.getContext();
+
+
         sMapFragment = SupportMapFragment.newInstance();
-
-
         sMapFragment.getMapAsync(this);
         return inflater.inflate(R.layout.locatie,container,false);
     }
@@ -50,6 +54,7 @@ public class Locatie extends Fragment implements OnMapReadyCallback {
         super.onViewCreated(view, savedInstanceState);
         FragmentManager sFragmentManager = getChildFragmentManager();
         sFragmentManager.beginTransaction().replace(R.id.map, sMapFragment).commit();
+        textViewSelected = (TextView) view.findViewById(R.id.textViewMarker);
 
 
     }
@@ -64,7 +69,7 @@ public class Locatie extends Fragment implements OnMapReadyCallback {
         googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                Log.e("marker", "clicked " + marker.getTitle());
+                textViewSelected.setText(marker.getTitle());
                 return false;
             }
         });
