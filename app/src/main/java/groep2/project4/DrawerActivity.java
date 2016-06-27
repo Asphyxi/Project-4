@@ -32,7 +32,7 @@ import groep2.project4.Fragments.Locatie;
 import groep2.project4.Fragments.Route;
 
 public class DrawerActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
+        implements NavigationView.OnNavigationItemSelectedListener/*, OnMapReadyCallback*/ {
 
     MenuColorManager menucolormanager = new MenuColorManager();
 
@@ -65,7 +65,6 @@ public class DrawerActivity extends AppCompatActivity
 
         menucolormanager.HeadingCharts(navigationView.getMenu().findItem(R.id.categorie1),navigationView.getMenu().findItem(R.id.categorie2),navigationView.getMenu().findItem(R.id.categorie3), navigationView.getMenu().findItem(R.id.categorie4));
 
-        sMapFragment.getMapAsync(this);
     }
 
     @Override
@@ -109,7 +108,6 @@ public class DrawerActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment;
-// wat er gebeurt als je op menuitems drukt
 
         if(sMapFragment.isAdded()){
             sFragmentManager.beginTransaction().hide(sMapFragment).commit();
@@ -141,30 +139,27 @@ public class DrawerActivity extends AppCompatActivity
 
 
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        //dit is de "initialize" van de map. als de map is geladen, doe dit.
-        List<Trommel> data = CSVReader.FileReader(this, "trommels.csv");
-
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.909424, 4.488258),10f));
-
-        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-                return false; //wat te doen als er op een marker wordt geklikt(voor set reminder)
-            }
-        });
-
-        for(Trommel tromtrom:data){
-            Marker test = googleMap.addMarker(new MarkerOptions()
-                    .position(new LatLng(tromtrom.longit, tromtrom.latit))
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
-                    .title(tromtrom.Adres)
-                    .snippet("concept: distance"));
-        }
-
-
-
-
-    }
+//    @Override
+//    public void onMapReady(GoogleMap googleMap) {
+//        //dit is de "initialize" van de map. als de map is geladen, doe dit.
+//        List<Trommel> data = CSVReader.FileReader(this, "trommels.csv");
+//
+//        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.909424, 4.488258),10f));
+//
+//        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+//            @Override
+//            public boolean onMarkerClick(Marker marker) {
+//                Log.e("marker", "clicked " + marker.getTitle());
+//                return false;
+//            }
+//        });
+//
+//        for(Trommel tromtrom:data){
+//            Marker test = googleMap.addMarker(new MarkerOptions()
+//                    .position(new LatLng(tromtrom.longit, tromtrom.latit))
+//                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
+//                    .title(tromtrom.Adres)
+//                    .snippet("concept: distance"));
+//        }
+//    }
 }

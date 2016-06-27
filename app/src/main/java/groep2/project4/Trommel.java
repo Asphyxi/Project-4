@@ -5,9 +5,9 @@ package groep2.project4;
  */
 public class Trommel {
 
-    String Adres;
-    Double longit;
-    Double latit;
+    public String Adres;
+    public Double longit;
+    public Double latit;
 
     public Trommel(String straat, String thv, String x, String y){
         if(null!=x || null!=y){
