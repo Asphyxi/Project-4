@@ -1,6 +1,6 @@
 package groep2.project4;
 
-
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
@@ -9,13 +9,21 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.Fragment;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.List;
 
 
 import groep2.project4.Fragments.FietsTrommels;
@@ -24,7 +32,7 @@ import groep2.project4.Fragments.Locatie;
 import groep2.project4.Fragments.Route;
 
 public class DrawerActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
+        implements NavigationView.OnNavigationItemSelectedListener/*, OnMapReadyCallback*/ {
 
     MenuColorManager menucolormanager = new MenuColorManager();
 
@@ -57,7 +65,6 @@ public class DrawerActivity extends AppCompatActivity
 
         menucolormanager.HeadingCharts(navigationView.getMenu().findItem(R.id.categorie1),navigationView.getMenu().findItem(R.id.categorie2),navigationView.getMenu().findItem(R.id.categorie3), navigationView.getMenu().findItem(R.id.categorie4));
 
-        sMapFragment.getMapAsync(this);
     }
 
     @Override
@@ -88,7 +95,6 @@ public class DrawerActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -102,7 +108,6 @@ public class DrawerActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment;
-// wat er gebeurt als je op menuitems drukt
 
         if(sMapFragment.isAdded()){
             sFragmentManager.beginTransaction().hide(sMapFragment).commit();
@@ -129,13 +134,32 @@ public class DrawerActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
-
-
         return true;
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        //dit is de "initialize" van de map. als de map is geladen, doe dit.
-    }
+
+
+//    @Override
+//    public void onMapReady(GoogleMap googleMap) {
+//        //dit is de "initialize" van de map. als de map is geladen, doe dit.
+//        List<Trommel> data = CSVReader.FileReader(this, "trommels.csv");
+//
+//        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.909424, 4.488258),10f));
+//
+//        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+//            @Override
+//            public boolean onMarkerClick(Marker marker) {
+//                Log.e("marker", "clicked " + marker.getTitle());
+//                return false;
+//            }
+//        });
+//
+//        for(Trommel tromtrom:data){
+//            Marker test = googleMap.addMarker(new MarkerOptions()
+//                    .position(new LatLng(tromtrom.longit, tromtrom.latit))
+//                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
+//                    .title(tromtrom.Adres)
+//                    .snippet("concept: distance"));
+//        }
+//    }
 }
