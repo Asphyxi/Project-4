@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -21,18 +20,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.w3c.dom.Text;
-
+import java.util.ArrayList;
 import java.util.List;
 
-import groep2.project4.CSVReader;
-import groep2.project4.DrawerActivity;
+import groep2.project4.Data.DataProcessor;
+import groep2.project4.Data.DataType;
 import groep2.project4.R;
-import groep2.project4.Trommel;
 
-/**
- * Created by Dominic on 21-6-2016.
- */
 public class Locatie extends Fragment implements OnMapReadyCallback {
     Context cont;
     public SupportMapFragment sMapFragment;
@@ -42,7 +36,6 @@ public class Locatie extends Fragment implements OnMapReadyCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         Log.e("Locatie.java", "onCreateView");
         cont = inflater.getContext();
-
 
         sMapFragment = SupportMapFragment.newInstance();
         sMapFragment.getMapAsync(this);
@@ -55,14 +48,13 @@ public class Locatie extends Fragment implements OnMapReadyCallback {
         FragmentManager sFragmentManager = getChildFragmentManager();
         sFragmentManager.beginTransaction().replace(R.id.map, sMapFragment).commit();
         textViewSelected = (TextView) view.findViewById(R.id.textViewMarker);
-
-
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        DataProcessor dataProcessor = new DataProcessor(cont, "trommels.csv");
         //dit is de "initialize" van de map. als de map is geladen, doe dit.
-        List<Trommel> data = CSVReader.FileReader(cont, "trommels.csv");
+        List<DataType> data = dataProcessor.RetrieveInfo();
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.909424, 4.488258),10f));
 
@@ -74,11 +66,13 @@ public class Locatie extends Fragment implements OnMapReadyCallback {
             }
         });
 
-        for(Trommel tromtrom:data){
+        for(DataType tromtrom:data){
+            ArrayList<String> info = tromtrom.getInfo();
+            Log.i("Holyshite", info.get(0) +" "+ info.get(1) +" "+ info.get(2) +" "+ info.get(3));
             Marker test = googleMap.addMarker(new MarkerOptions()
-                    .position(new LatLng(tromtrom.longit, tromtrom.latit))
+                    .position(new LatLng(Double.parseDouble(info.get(1)), Double.parseDouble(info.get(2))))
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
-                    .title(tromtrom.Adres)
+                    .title(info.get(0))
                     .snippet("concept: distance"));
         }
     }
