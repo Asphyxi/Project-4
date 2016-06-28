@@ -1,6 +1,5 @@
 package groep2.project4;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
@@ -9,24 +8,17 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.Fragment;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-import java.util.List;
 
 
 import groep2.project4.Fragments.FietsTrommels;
+import groep2.project4.Fragments.FragmentBarChart;
+import groep2.project4.Fragments.FragmentLineChart;
+import groep2.project4.Fragments.FragmentPieChart;
 import groep2.project4.Fragments.Kladblok;
 import groep2.project4.Fragments.Locatie;
 import groep2.project4.Fragments.Route;
@@ -36,10 +28,10 @@ public class DrawerActivity extends AppCompatActivity
 
     MenuColorManager menucolormanager = new MenuColorManager();
 
-    Fragment fragFietsTrommels = new FietsTrommels();
+    Fragment fragFietsTrommels = new FragmentLineChart();
     Fragment fragDiefstallen = new FragmentBarChart();
     Fragment fragLocatie = new Locatie();
-    Fragment fragRoute = new Route();
+    Fragment fragRoute = new FragmentPieChart();
     Fragment fragKladblok = new Kladblok();
 
     SupportMapFragment sMapFragment;
