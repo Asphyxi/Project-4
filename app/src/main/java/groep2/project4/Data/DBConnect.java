@@ -1,4 +1,4 @@
-package groep2.project4;
+package groep2.project4.Data;
 
 import android.util.Log;
 
@@ -6,12 +6,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.sql.SQLException;
 
-/**
- * Created by Dominic on 21-6-2016.
- */
-public class DBConnect {
+public class DBConnect implements DataReader {
     private static Connection con;
     private static Statement stmnt;
 
