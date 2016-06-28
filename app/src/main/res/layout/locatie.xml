@@ -16,7 +16,7 @@
         <FrameLayout
         android:id="@+id/mapbottom"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
             android:layout_marginTop="10dp">
 
             <ImageView
@@ -31,6 +31,14 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/textViewMarker"
                 android:layout_gravity="left|top" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Herinner mij!"
+                android:id="@+id/setReminderButton"
+                android:layout_gravity="center_horizontal|bottom" />
+
         </FrameLayout>
 
     </LinearLayout>
