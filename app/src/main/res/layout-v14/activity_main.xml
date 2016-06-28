@@ -21,4 +21,16 @@
         android:layout_alignParentStart="false"
         style="@android:style/Widget.DeviceDefault.Light.Button"
         android:background="#4faf52" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/kalenderknop"
+        android:background="#4faf52"
+        android:layout_marginBottom="26dp"
+        android:layout_above="@+id/startknop"
+        android:layout_alignParentStart="true" />
+
+
 </RelativeLayout>

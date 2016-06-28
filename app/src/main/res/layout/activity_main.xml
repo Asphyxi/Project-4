@@ -22,6 +22,23 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="maak een reminder"
+        android:id="@+id/kalenderknop"
+        android:layout_above="@+id/startknop"
+        android:layout_alignStart="@+id/startknop"
+        android:layout_alignEnd="@+id/startknop" />
+
+    Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Date"
+        android:id="@+id/button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:onClick="setDate"/>
 
 
 </RelativeLayout>

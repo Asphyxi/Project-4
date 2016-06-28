@@ -12,8 +12,26 @@
         <FrameLayout
             android:id="@+id/map"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="5"></FrameLayout>
+            android:layout_height="350dp"></FrameLayout>
+        <FrameLayout
+        android:id="@+id/mapbottom"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/imageView"
+                android:src="#9fd5a0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/textViewMarker"
+                android:layout_gravity="left|top" />
+        </FrameLayout>
 
     </LinearLayout>
 </RelativeLayout>
