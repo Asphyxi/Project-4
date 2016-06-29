@@ -23,7 +23,6 @@ public class CSVReader implements DataReader {
                     datalist.add(line.split(cvsSplitBy));
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Log.e("Skip", "Invalid data was skipped");
                 }
             }
         } catch (Exception e) {

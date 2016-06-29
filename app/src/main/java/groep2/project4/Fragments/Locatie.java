@@ -36,11 +36,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import groep2.project4.CSVReader;
-import groep2.project4.DrawerActivity;
-import groep2.project4.MainActivity;
+import groep2.project4.Data.DataProcessor;
+import groep2.project4.Data.DataType;
 import groep2.project4.R;
-import groep2.project4.Trommel;
 
 /**
  * Created by Dominic on 21-6-2016.
@@ -69,7 +67,6 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
         Log.e("Locatie.java", "onCreateView");
         cont = inflater.getContext();
 
-
         sMapFragment = SupportMapFragment.newInstance();
         sMapFragment.getMapAsync(this);
         return inflater.inflate(R.layout.locatie, container, false);
@@ -86,7 +83,7 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
         reminderbutton.setEnabled(false);
 
         reminderbutton.setOnClickListener(new View.OnClickListener() {
-            
+
 
             @Override
             public void onClick(View view) {
@@ -97,12 +94,13 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
         });
     }
 
-    
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        DataProcessor dataProcessor = new DataProcessor(cont, "trommels.csv");
         //dit is de "initialize" van de map. als de map is geladen, doe dit.
-        List<Trommel> data = CSVReader.FileReader(cont, "trommels.csv");
+        List<DataType> data = dataProcessor.RetrieveInfo();
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.909424, 4.488258), 10f));
 
@@ -112,27 +110,20 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
                 reminderbutton.setVisibility(View.VISIBLE);
                 reminderbutton.setEnabled(true);
                 textViewSelected.setText(marker.getTitle());
-
                 return false;
             }
         });
 
-
-        int counter = 0;
-        String name = "";
-        for (Trommel tromtrom : data) {
+        for(DataType tromtrom:data){
+            ArrayList<String> info = tromtrom.getInfo();
             Marker test = googleMap.addMarker(new MarkerOptions()
-                    .position(new LatLng(tromtrom.longit, tromtrom.latit))
+                    .position(new LatLng(Double.parseDouble(info.get(1)), Double.parseDouble(info.get(2))))
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
-                    .title(tromtrom.Adres)
+                    .title(info.get(0))
                     .snippet("concept: distance"));
-            if (tromtrom.Adres.length() > counter) {
-                counter = tromtrom.Adres.length();
-                name = tromtrom.Adres;
-            }
         }
-        Log.e("counter", name);
     }
+}
 
 
     @Override
