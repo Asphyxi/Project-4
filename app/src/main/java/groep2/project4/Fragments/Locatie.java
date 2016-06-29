@@ -32,6 +32,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -40,9 +41,6 @@ import groep2.project4.Data.DataProcessor;
 import groep2.project4.Data.DataType;
 import groep2.project4.R;
 
-/**
- * Created by Dominic on 21-6-2016.
- */
 public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListener,OnMapReadyCallback {
     Context cont;
     public SupportMapFragment sMapFragment;
@@ -123,7 +121,6 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
                     .snippet("concept: distance"));
         }
     }
-}
 
 
     @Override
