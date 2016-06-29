@@ -21,11 +21,11 @@ import groep2.project4.R;
 /**
  * Created by Dominic on 27-6-2016.
  */
-public class FragmentBarChart extends Fragment {
+public class FragmentGroupedBarChart extends Fragment {
 
     private BarData data;
 
-    public FragmentBarChart(){}
+    public FragmentGroupedBarChart(){}
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -68,15 +68,24 @@ public class FragmentBarChart extends Fragment {
         group1.add(new BarEntry(18f, 5));
         group1.add(new BarEntry(9f, 6));
 
+        ArrayList<BarEntry> group2 = new ArrayList<>();
+        group2.add(new BarEntry(6f, 1));
+        group2.add(new BarEntry(7f, 2));
+        group2.add(new BarEntry(8f, 3));
+        group2.add(new BarEntry(12f, 4));
+        group2.add(new BarEntry(15f, 5));
+        group2.add(new BarEntry(10f, 6));
+
         BarDataSet barDataSet1 = new BarDataSet(group1, "Group 1");
         //barDataSet1.setColor(Color.rgb(0, 155, 0));
         barDataSet1.setColor(Color.GREEN);
 
-
+        BarDataSet barDataSet2 = new BarDataSet(group2, "Group 2");
+        barDataSet2.setColor(Color.RED);
 
         ArrayList<IBarDataSet> dataset = new ArrayList<>();
         dataset.add(barDataSet1);
-
+        dataset.add(barDataSet2);
 
 
         data=new BarData(labels, dataset);

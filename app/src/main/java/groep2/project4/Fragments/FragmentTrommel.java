@@ -16,11 +16,11 @@ import groep2.project4.R;
 /**
  * Created by Ratan on 7/27/2015.
  */
-public class TabFragment extends Fragment {
+public class FragmentTrommel extends Fragment {
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
-    public static int int_items = 3 ;
+    public static int int_items = 2 ;
 
     @Nullable
     @Override
@@ -28,9 +28,9 @@ public class TabFragment extends Fragment {
         /**
          *Inflate tab_layout and setup Views.
          */
-            View x =  inflater.inflate(R.layout.tab_layout,null);
-            tabLayout = (TabLayout) x.findViewById(R.id.tabs);
-            viewPager = (ViewPager) x.findViewById(R.id.viewpager);
+        View x =  inflater.inflate(R.layout.tab_layout,null);
+        tabLayout = (TabLayout) x.findViewById(R.id.tabs);
+        viewPager = (ViewPager) x.findViewById(R.id.viewpager);
 
         /**
          *Set an Apater for the View Pager
@@ -46,8 +46,8 @@ public class TabFragment extends Fragment {
         tabLayout.post(new Runnable() {
             @Override
             public void run() {
-                    tabLayout.setupWithViewPager(viewPager);
-                   }
+                tabLayout.setupWithViewPager(viewPager);
+            }
         });
 
         return x;
@@ -67,12 +67,11 @@ public class TabFragment extends Fragment {
         @Override
         public Fragment getItem(int position)
         {
-          switch (position){
-              case 0 : return new FragmentLineChart();
-              case 1 : return new SocialFragment();
-              case 2 : return new UpdatesFragment();
-          }
-        return null;
+            switch (position){
+                case 0 : return new FragmentBarChart();
+                case 1 : return new FragmentGroupedBarChart();
+            }
+            return null;
         }
 
         @Override
@@ -91,13 +90,11 @@ public class TabFragment extends Fragment {
 
             switch (position){
                 case 0 :
-                    return "Linechart";
+                    return "BarChart";
                 case 1 :
-                    return "PieChart1";
-                case 2 :
-                    return "PieChart2";
+                    return "Grouped BarChart";
             }
-                return null;
+            return null;
         }
     }
 

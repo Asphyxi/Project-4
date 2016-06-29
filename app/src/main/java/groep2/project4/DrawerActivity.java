@@ -1,10 +1,8 @@
 package groep2.project4;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,23 +14,22 @@ import android.support.v4.app.Fragment;
 
 import com.google.android.gms.maps.SupportMapFragment;
 
-import groep2.project4.Fragments.FragmentBarChart;
-import groep2.project4.Fragments.FragmentLineChart;
-import groep2.project4.Fragments.FragmentPieChart;
+import groep2.project4.Fragments.FragmentTrommel;
 import groep2.project4.Fragments.Kladblok;
 import groep2.project4.Fragments.Locatie;
-import groep2.project4.Fragments.TabFragment;
+import groep2.project4.Fragments.FragmentDiefstal;
+import groep2.project4.Fragments.Route;
 
 public class DrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener/*, OnMapReadyCallback*/ {
 
     MenuColorManager menucolormanager = new MenuColorManager();
 
-    Fragment fragFietsTrommels = new FragmentLineChart();
-    Fragment fragDiefstallen = new FragmentBarChart();
+    Fragment fragFietsTrommels = new FragmentTrommel();
+    Fragment fragDiefstallen = new FragmentDiefstal();
     Fragment fragLocatie = new Locatie();
-    Fragment fragRoute = new FragmentPieChart();
-    Fragment fragKladblok = new TabFragment();
+    Fragment fragRoute = new Route();
+    Fragment fragKladblok = new Kladblok();
 
 
     SupportMapFragment sMapFragment;
