@@ -21,6 +21,7 @@ import groep2.project4.Fragments.FragmentLineChart;
 import groep2.project4.Fragments.FragmentPieChart;
 import groep2.project4.Fragments.Kladblok;
 import groep2.project4.Fragments.Locatie;
+import groep2.project4.Fragments.TabFragment;
 
 public class DrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener/*, OnMapReadyCallback*/ {
@@ -31,15 +32,8 @@ public class DrawerActivity extends AppCompatActivity
     Fragment fragDiefstallen = new FragmentBarChart();
     Fragment fragLocatie = new Locatie();
     Fragment fragRoute = new FragmentPieChart();
-    Fragment fragKladblok = new Kladblok();
+    Fragment fragKladblok = new TabFragment();
 
-
-    FragmentManager mFragmentManager;
-
-//    ActionBar.Tab Linechart, Piechart1, Piechart2;
-//    android.app.Fragment fragmentTab1 = new FragmentTab1();
-//    android.app.Fragment fragmentTab2 = new FragmentTab2();
-//    android.app.Fragment fragmentTab3 = new FragmentTab3();
 
     SupportMapFragment sMapFragment;
 
@@ -65,21 +59,6 @@ public class DrawerActivity extends AppCompatActivity
 
         menucolormanager.HeadingCharts(navigationView.getMenu().findItem(R.id.categorie1),navigationView.getMenu().findItem(R.id.categorie2),navigationView.getMenu().findItem(R.id.categorie3), navigationView.getMenu().findItem(R.id.categorie4));
 
-//        ActionBar actionBar = getActionBar();
-//
-//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-//
-//        Linechart = actionBar.newTab().setText("Tab1");
-//        Piechart1 = actionBar.newTab().setText("Tab2");
-//        Piechart2 = actionBar.newTab().setText("Tab3");
-//
-//        Linechart.setTabListener(new TabListener(fragmentTab1));
-//        Piechart1.setTabListener(new TabListener(fragmentTab2));
-//        Piechart2.setTabListener(new TabListener(fragmentTab3));
-//
-//        actionBar.addTab(Linechart);
-//        actionBar.addTab(Piechart1);
-//        actionBar.addTab(Piechart2);
     }
 
     @Override
@@ -131,8 +110,6 @@ public class DrawerActivity extends AppCompatActivity
         if (id == R.id.fietstrommels) {fragment = fragFietsTrommels;
 
         } else if (id == R.id.diefstallen) { fragment = fragDiefstallen;
-//            FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-//            fragmentTransaction.replace(R.id.containerView,new TabFragment()).commit();
 
         } else if (id == R.id.locatie) { fragment = fragLocatie;
             if(!sMapFragment.isAdded()) {
