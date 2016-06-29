@@ -1,8 +1,10 @@
 package groep2.project4;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,14 +16,11 @@ import android.support.v4.app.Fragment;
 
 import com.google.android.gms.maps.SupportMapFragment;
 
-
-import groep2.project4.Fragments.FietsTrommels;
 import groep2.project4.Fragments.FragmentBarChart;
 import groep2.project4.Fragments.FragmentLineChart;
 import groep2.project4.Fragments.FragmentPieChart;
 import groep2.project4.Fragments.Kladblok;
 import groep2.project4.Fragments.Locatie;
-import groep2.project4.Fragments.Route;
 
 public class DrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener/*, OnMapReadyCallback*/ {
@@ -34,6 +33,14 @@ public class DrawerActivity extends AppCompatActivity
     Fragment fragRoute = new FragmentPieChart();
     Fragment fragKladblok = new Kladblok();
 
+
+    FragmentManager mFragmentManager;
+
+//    ActionBar.Tab Linechart, Piechart1, Piechart2;
+//    android.app.Fragment fragmentTab1 = new FragmentTab1();
+//    android.app.Fragment fragmentTab2 = new FragmentTab2();
+//    android.app.Fragment fragmentTab3 = new FragmentTab3();
+
     SupportMapFragment sMapFragment;
 
     @Override
@@ -42,6 +49,7 @@ public class DrawerActivity extends AppCompatActivity
         setContentView(R.layout.activity_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         sMapFragment = SupportMapFragment.newInstance();
 
@@ -57,6 +65,21 @@ public class DrawerActivity extends AppCompatActivity
 
         menucolormanager.HeadingCharts(navigationView.getMenu().findItem(R.id.categorie1),navigationView.getMenu().findItem(R.id.categorie2),navigationView.getMenu().findItem(R.id.categorie3), navigationView.getMenu().findItem(R.id.categorie4));
 
+//        ActionBar actionBar = getActionBar();
+//
+//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+//
+//        Linechart = actionBar.newTab().setText("Tab1");
+//        Piechart1 = actionBar.newTab().setText("Tab2");
+//        Piechart2 = actionBar.newTab().setText("Tab3");
+//
+//        Linechart.setTabListener(new TabListener(fragmentTab1));
+//        Piechart1.setTabListener(new TabListener(fragmentTab2));
+//        Piechart2.setTabListener(new TabListener(fragmentTab3));
+//
+//        actionBar.addTab(Linechart);
+//        actionBar.addTab(Piechart1);
+//        actionBar.addTab(Piechart2);
     }
 
     @Override
@@ -108,6 +131,8 @@ public class DrawerActivity extends AppCompatActivity
         if (id == R.id.fietstrommels) {fragment = fragFietsTrommels;
 
         } else if (id == R.id.diefstallen) { fragment = fragDiefstallen;
+//            FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+//            fragmentTransaction.replace(R.id.containerView,new TabFragment()).commit();
 
         } else if (id == R.id.locatie) { fragment = fragLocatie;
             if(!sMapFragment.isAdded()) {

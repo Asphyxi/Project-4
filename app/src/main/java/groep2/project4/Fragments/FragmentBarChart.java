@@ -41,14 +41,14 @@ public class FragmentBarChart extends Fragment {
         super.onCreate(savedInstanceState);
 
         ArrayList<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(4f, 0));
-        entries.add(new BarEntry(8f, 1));
-        entries.add(new BarEntry(6f, 2));
-        entries.add(new BarEntry(12f, 3));
-        entries.add(new BarEntry(18f, 4));
-        entries.add(new BarEntry(22f, 5));
-        entries.add(new BarEntry(26f, 6));
-        entries.add(new BarEntry(29f, 7));
+        entries.add(new BarEntry(4f, 1));
+        entries.add(new BarEntry(8f, 2));
+        entries.add(new BarEntry(6f, 3));
+        entries.add(new BarEntry(12f, 4));
+        entries.add(new BarEntry(18f, 5));
+        entries.add(new BarEntry(22f, 6));
+        entries.add(new BarEntry(26f, 7));
+        entries.add(new BarEntry(29f, 8));
 
 
         ArrayList<String> labels = new ArrayList<String>();
@@ -61,20 +61,20 @@ public class FragmentBarChart extends Fragment {
 
 
         ArrayList<BarEntry> group1 = new ArrayList<>();
-        group1.add(new BarEntry(4f, 0));
-        group1.add(new BarEntry(8f, 1));
-        group1.add(new BarEntry(6f, 2));
-        group1.add(new BarEntry(12f, 3));
-        group1.add(new BarEntry(18f, 4));
-        group1.add(new BarEntry(9f, 5));
+        group1.add(new BarEntry(4f, 1));
+        group1.add(new BarEntry(8f, 2));
+        group1.add(new BarEntry(6f, 3));
+        group1.add(new BarEntry(12f, 4));
+        group1.add(new BarEntry(18f, 5));
+        group1.add(new BarEntry(9f, 6));
 
         ArrayList<BarEntry> group2 = new ArrayList<>();
-        group2.add(new BarEntry(6f, 0));
-        group2.add(new BarEntry(7f, 1));
-        group2.add(new BarEntry(8f, 2));
-        group2.add(new BarEntry(12f, 3));
-        group2.add(new BarEntry(15f, 4));
-        group2.add(new BarEntry(10f, 5));
+        group2.add(new BarEntry(6f, 1));
+        group2.add(new BarEntry(7f, 2));
+        group2.add(new BarEntry(8f, 3));
+        group2.add(new BarEntry(12f, 4));
+        group2.add(new BarEntry(15f, 5));
+        group2.add(new BarEntry(10f, 6));
 
         BarDataSet barDataSet1 = new BarDataSet(group1, "Group 1");
         //barDataSet1.setColor(Color.rgb(0, 155, 0));
