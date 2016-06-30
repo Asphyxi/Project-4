@@ -100,6 +100,7 @@ public class DrawerActivity extends AppCompatActivity
         int id = item.getItemId();
         Fragment fragment;
 
+
         if(sMapFragment.isAdded()){
             sFragmentManager.beginTransaction().hide(sMapFragment).commit();
         }

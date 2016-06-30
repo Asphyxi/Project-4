@@ -37,6 +37,7 @@ public class KalenderEvent extends AppCompatActivity {
         values.put(CalendarContract.Events.TITLE, "Bike Appointment");
         values.put(CalendarContract.Events.DESCRIPTION, "pick up your bike");
         values.put(CalendarContract.Events.CALENDAR_ID, calID);
+        values.put(CalendarContract.Events.EVENT_TIMEZONE, "");
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
