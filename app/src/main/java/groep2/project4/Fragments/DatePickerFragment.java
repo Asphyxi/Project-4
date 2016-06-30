@@ -1,5 +1,6 @@
 package groep2.project4.Fragments;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
@@ -7,6 +8,8 @@ import android.os.Bundle;
 import android.widget.DatePicker;
 
 import java.util.Calendar;
+
+import static android.Manifest.permission.READ_CALENDAR;
 
 /**
  * Created by Dennis on 28-6-2016.
@@ -39,4 +42,6 @@ public class DatePickerFragment extends DialogFragment
     public FragmentManager getSupportFragmentManager() {
         return getActivity().getFragmentManager();
     }
+
+
 }

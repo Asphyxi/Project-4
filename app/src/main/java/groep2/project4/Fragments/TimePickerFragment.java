@@ -1,5 +1,6 @@
 package groep2.project4.Fragments;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
@@ -41,8 +42,9 @@ public class TimePickerFragment extends DialogFragment
         makeReminder();
     }
 
+
     public void makeReminder(){
         pushAppointmentsToCalendar
-                .pushAppointmentsToCalender(getActivity(),"Fiets Trommel Reminder", info,"",1,new GregorianCalendar(year + 1900, month, day, hour, minute, 0).getTimeInMillis(), false, false);
+                .pushAppointmentsToCalender(getActivity(),"Fiets Trommel Reminder", info,"",1,new GregorianCalendar(year + 1900, month, day, hour, minute, 0).getTimeInMillis(), false, false, Manifest.permission.READ_CALENDAR,Manifest.permission.WRITE_CALENDAR);
     }
 }

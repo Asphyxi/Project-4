@@ -3,13 +3,26 @@ package groep2.project4.Fragments;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 
 /**
  * Created by Dennis on 28-6-2016.
  */
 public class pushAppointmentsToCalendar {
-    public static long pushAppointmentsToCalender(Activity curActivity, String title, String addInfo, String place, int status, long startDate, boolean needReminder, boolean needMailService) {
+    public static long pushAppointmentsToCalender(Activity curActivity, String title, String addInfo, String place, int status, long startDate, boolean needReminder, boolean needMailService,String... permissie) {
         /***************** Event: note(without alert) *******************/
+        boolean permissions = true;
+        for (String p : permissie) {
+            permissions = permissions && ContextCompat.checkSelfPermission(curActivity, p) == 0;
+        }
+        if(!permissions){
+        ActivityCompat.requestPermissions(curActivity,permissie,42);}
+
+
+
+        //geen idee wat 42 is
+
 
         String eventUriString = "content://com.android.calendar/events";
         ContentValues eventValues = new ContentValues();
@@ -103,4 +116,5 @@ public class pushAppointmentsToCalendar {
         return eventID;
 
     }
+
 }
