@@ -1,5 +1,6 @@
 package groep2.project4;
 
+import android.content.Context;
 import android.Manifest;
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -18,9 +19,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import groep2.project4.Data.LocalDB;
+
 
 public class MainActivity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,10 +69,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-
-
-
 }
 
 //Color Green - Light   #7EC580

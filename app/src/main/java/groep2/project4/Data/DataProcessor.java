@@ -4,11 +4,15 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
+import groep2.project4.DrawerActivity;
+import groep2.project4.MainActivity;
+
 public class DataProcessor {
 
     CSVReader csvReader = null;
     Context myContext;
     String Filename;
+    LocalDB DB = DrawerActivity.getDb();
 
     public DataProcessor(Context myContext, String Filename) {
         csvReader = new CSVReader();
@@ -34,21 +38,20 @@ public class DataProcessor {
         return result;
     }
 
-    public List<DataType> ProcessInfo(List<String[]> raw) {
-        List<DataType> result = new ArrayList<>();
-
+    public void ProcessInfo(List<String[]> raw) {
+        DB.openDB();
         for (String[] info:raw) {
             if (Filename.equals("trommels.csv")){
                 if (!info[18].equals("") && !info[19].equals(""))
-                    result.add(new Trommel(info[9], info[10], info[28], info[18], info[19]));
+                    DB.InsertIntoTrommel(info[9]+" "+info[10], Double.parseDouble(info[18]), Double.parseDouble(info[19]), info[28]);
             } else if (Filename.equals("diefstal.csv")){
-                result.add(new Diefstal(info[8], info[1], info[24], info[22]));
+                DB.InsertIntoDiefstal(info[8], info[1], info[24], info[22]);
             }
         }
-        return result;
+        DB.closeDB();
     }
 
-    public List<DataType> RetrieveInfo() {
-        return ProcessInfo(GetInfo());
+    public void RetrieveInfo() {
+        ProcessInfo(GetInfo());
     }
 }

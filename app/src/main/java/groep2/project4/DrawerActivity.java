@@ -1,5 +1,6 @@
 package groep2.project4;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,7 @@ import android.support.v4.app.Fragment;
 
 import com.google.android.gms.maps.SupportMapFragment;
 
+import groep2.project4.Data.LocalDB;
 import groep2.project4.Fragments.FragmentTrommel;
 import groep2.project4.Fragments.Kladblok;
 import groep2.project4.Fragments.Locatie;
@@ -23,6 +25,8 @@ import groep2.project4.Fragments.Route;
 public class DrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener/*, OnMapReadyCallback*/ {
 
+    static Context context;
+    static LocalDB db;
     MenuColorManager menucolormanager = new MenuColorManager();
 
     Fragment fragFietsTrommels = new FragmentTrommel();
@@ -41,7 +45,9 @@ public class DrawerActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        context = getApplicationContext();
+        db = new LocalDB(context);
+        db.CreateDB();
         sMapFragment = SupportMapFragment.newInstance();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -55,7 +61,6 @@ public class DrawerActivity extends AppCompatActivity
 //        navigationView.setItemTextColor(ColorStateList.valueOf(Color.DKGRAY));
 
         menucolormanager.HeadingCharts(navigationView.getMenu().findItem(R.id.categorie1),navigationView.getMenu().findItem(R.id.categorie2),navigationView.getMenu().findItem(R.id.categorie3), navigationView.getMenu().findItem(R.id.categorie4));
-
     }
 
     @Override
@@ -129,7 +134,9 @@ public class DrawerActivity extends AppCompatActivity
         return true;
     }
 
-
+    public static LocalDB getDb() {
+        return db;
+    }
 
 //    @Override
 //    public void onMapReady(GoogleMap googleMap) {
