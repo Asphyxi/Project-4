@@ -39,18 +39,6 @@ public class MainActivity extends AppCompatActivity {
         Button kalenderknop = (Button) findViewById(R.id.kalenderknop);
         final Intent callCalendar = new Intent(Intent.ACTION_INSERT);
 
-        kalenderknop.setText("Make a reminder");
-
-        callCalendar.setType("vnd.android.cursor.item/event");
-        callCalendar.putExtra(CalendarContract.Events.TITLE, "Bike Reminder");
-        callCalendar.putExtra(CalendarContract.Events.EVENT_LOCATION, "Bike location");
-        callCalendar.putExtra(CalendarContract.Events.DESCRIPTION, "Pick up your bike!");
-
-        GregorianCalendar callDate = new GregorianCalendar(2016, 5, 27);
-        callCalendar.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, callDate.getTimeInMillis());
-        callCalendar.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, callDate.getTimeInMillis());
-        callCalendar.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, callDate.getTimeInMillis());
-
 
         startknop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,14 +47,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        kalenderknop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        final int callbackId = 42;
+        checkPermissions(callbackId, Manifest.permission.READ_CALENDAR, Manifest.permission.WRITE_CALENDAR);
 
-                startActivity(callCalendar);
 
-            }
-        });
+
+    }
+    private void checkPermissions(int callbackId, String... permissionsId) {
+        boolean permissions = true;
+        for (String p : permissionsId) {
+            permissions = permissions && ContextCompat.checkSelfPermission(this, p) == 0;
+        }
+
+        if (!permissions)
+            ActivityCompat.requestPermissions(this, permissionsId, callbackId);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int callbackId, String permissions[], int[] grantResults) {
+
 
     }
 }
