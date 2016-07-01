@@ -24,6 +24,7 @@ import android.widget.Toast;
 import android.location.LocationListener;
 import android.location.LocationProvider;
 
+import com.google.android.gms.maps.model.Marker;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
@@ -32,6 +33,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
 
+import groep2.project4.Fragments.Locatie;
+
 public class AgendaActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
     private static final int MY_PERMISSIONS_REQUEST_WRITE_CALENDAR = 0;
     private int year;
@@ -39,6 +42,7 @@ public class AgendaActivity extends AppCompatActivity implements TimePickerDialo
     private int day;
     private int hour;
     private int minute;
+    Marker selectedmarker = Locatie.getSelectedMarker();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,8 +124,8 @@ public class AgendaActivity extends AppCompatActivity implements TimePickerDialo
                                 values.put(CalendarContract.Events.DTSTART, startMillis);
                                 values.put(CalendarContract.Events.DTEND, endMillis);
                                 values.put(CalendarContract.Events.EVENT_TIMEZONE, timeZone.getID());
-                                values.put(CalendarContract.Events.TITLE, "Fiets locatie");
-                                values.put(CalendarContract.Events.DESCRIPTION, "locatie van de fiets");
+                                values.put(CalendarContract.Events.TITLE, "Fiets ophalen");
+                                values.put(CalendarContract.Events.DESCRIPTION, selectedmarker.getTitle());
                                 System.out.println(CId);
                                 System.out.println(CNames);
                                 System.out.println(spinner.getSelectedItem().toString());
@@ -149,8 +153,8 @@ public class AgendaActivity extends AppCompatActivity implements TimePickerDialo
                                 values.put(CalendarContract.Events.DTSTART, startMillis);
                                 values.put(CalendarContract.Events.DTEND, endMillis);
                                 values.put(CalendarContract.Events.EVENT_TIMEZONE, timeZone.getID());
-                                values.put(CalendarContract.Events.TITLE, "Fietslocatie");
-                                values.put(CalendarContract.Events.DESCRIPTION, "locatie van de fiets");
+                                values.put(CalendarContract.Events.TITLE, "Fiets ophalen");
+                                values.put(CalendarContract.Events.DESCRIPTION, selectedmarker.getTitle());
                                 values.put(CalendarContract.Events.CALENDAR_ID, CId.get(CNames.indexOf(spinner.getSelectedItem().toString())));
                                 //noinspection MissingPermission
                                 cr.insert(CalendarContract.Events.CONTENT_URI, values);

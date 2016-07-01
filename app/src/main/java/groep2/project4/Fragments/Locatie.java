@@ -43,7 +43,7 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
     int hour_day = 0;
     int hour_month = 0;
     int hour_year = 0;
-
+    public static Marker selectedmarker;
 
     Calendar calendar = Calendar.getInstance();
 
@@ -76,21 +76,15 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
 
             @Override
             public void onClick(View view) {
-//                DatePickerFragment dateFragment = new DatePickerFragment();
-//                dateFragment.info = textViewSelected.getText().toString();
-//                dateFragment.show(getSupportFragmentManager(), "datePicker");
-
                 Intent intent = new Intent(getContext(), AgendaActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+                getContext().startActivity(intent);}});
             }
-        });
-    }
 
 
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
+@Override
+public void onMapReady(GoogleMap googleMap) {
 //        DataProcessor dataProcessor = new DataProcessor(cont, "trommels.csv");
 //        dataProcessor.RetrieveInfo();
 //
@@ -98,23 +92,24 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
 
 
         googleMap.addMarker(new MarkerOptions()
-                    .position(new LatLng(51.922,4.4613))
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
-                    .title("poep")
-                    .snippet("concept: distance"));
+        .position(new LatLng(51.922,4.4613))
+        .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
+        .title("poep")
+        .snippet("concept: distance"));
 
 
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.909424, 4.488258), 10f));
 
         googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-                reminderbutton.setVisibility(View.VISIBLE);
-                reminderbutton.setEnabled(true);
-                textViewSelected.setText(marker.getTitle());
-                return false;
-            }
+@Override
+public boolean onMarkerClick(Marker marker) {
+        selectedmarker = marker;
+        reminderbutton.setVisibility(View.VISIBLE);
+        reminderbutton.setEnabled(true);
+        textViewSelected.setText(marker.getTitle());
+        return false;
+        }
         });
 
 //        for(Result tromtrom:data){
@@ -134,5 +129,8 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
 
     public android.app.FragmentManager getSupportFragmentManager() {
         return getActivity().getFragmentManager();
+    }
+    public static Marker getSelectedMarker(){
+        return selectedmarker;
     }
 }
