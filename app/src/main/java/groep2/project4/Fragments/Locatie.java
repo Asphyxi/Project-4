@@ -1,6 +1,7 @@
 package groep2.project4.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.Calendar;
 import java.util.List;
 
+import groep2.project4.AgendaActivity;
 import groep2.project4.Data.DataProcessor;
 import groep2.project4.Data.InformationRetriever;
 import groep2.project4.Data.Result;
@@ -74,9 +76,13 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
 
             @Override
             public void onClick(View view) {
-                DatePickerFragment dateFragment = new DatePickerFragment();
-                dateFragment.info = textViewSelected.getText().toString();
-                dateFragment.show(getSupportFragmentManager(), "datePicker");
+//                DatePickerFragment dateFragment = new DatePickerFragment();
+//                dateFragment.info = textViewSelected.getText().toString();
+//                dateFragment.show(getSupportFragmentManager(), "datePicker");
+
+                Intent intent = new Intent(getContext(), AgendaActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
             }
         });
     }
@@ -85,10 +91,19 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        DataProcessor dataProcessor = new DataProcessor(cont, "trommels.csv");
-        //dit is de "initialize" van de map. als de map is geladen, doe dit.
-        dataProcessor.RetrieveInfo();
-        List<Result> data = InformationRetriever.getLocations(cont);
+//        DataProcessor dataProcessor = new DataProcessor(cont, "trommels.csv");
+//        dataProcessor.RetrieveInfo();
+//
+//        List<Result> data = InformationRetriever.getLocations(cont);
+
+
+        googleMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(51.922,4.4613))
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
+                    .title("poep")
+                    .snippet("concept: distance"));
+
+
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.909424, 4.488258), 10f));
 
@@ -102,13 +117,13 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
             }
         });
 
-        for(Result tromtrom:data){
-            Marker test = googleMap.addMarker(new MarkerOptions()
-                    .position(new LatLng(tromtrom.latit, tromtrom.longit))
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
-                    .title(tromtrom.adres)
-                    .snippet("concept: distance"));
-        }
+//        for(Result tromtrom:data){
+//            Marker test = googleMap.addMarker(new MarkerOptions()
+//                    .position(new LatLng(tromtrom.latit, tromtrom.longit))
+//                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
+//                    .title(tromtrom.adres)
+//                    .snippet("concept: distance"));
+//        }
     }
 
 

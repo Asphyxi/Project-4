@@ -27,7 +27,7 @@ public class pushAppointmentsToCalendar {
         String eventUriString = "content://com.android.calendar/events";
         ContentValues eventValues = new ContentValues();
 
-        eventValues.put("calendar_id", 1); // id, We need to choose from our mobile. for primary its 1
+        eventValues.put("calendar_id", 1);      // id, We need to choose from our mobile. for primary its 1
         eventValues.put("title", title);
         eventValues.put("description", addInfo);
         eventValues.put("eventLocation", place);
@@ -37,7 +37,7 @@ public class pushAppointmentsToCalendar {
         eventValues.put("dtstart", startDate);
         eventValues.put("dtend", endDate);
 
-        eventValues.put("allDay", 0); //If it is bithday alarm or such kind (which should remind me for whole day) 0 for false, 1 for true
+        eventValues.put("allDay", 0);           //If it is bithday alarm or such kind (which should remind me for whole day) 0 for false, 1 for true
         eventValues.put("eventStatus", status); // This information is sufficient for most entries tentative (0), confirmed (1) or canceled (2):
         eventValues.put("eventTimezone", "UTC/GMT +2:00");
    /*Comment below visibility and transparency  column to avoid java.lang.IllegalArgumentException column visibility is invalid error */
