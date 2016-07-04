@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         final Intent toDrawer = new Intent(this, DrawerActivity.class);
 
-        Button kalenderknop = (Button) findViewById(R.id.kalenderknop);
+
         final Intent callCalendar = new Intent(Intent.ACTION_INSERT);
 
 

@@ -23,11 +23,14 @@
         android:layout_weight="5">
 
 
-        <FrameLayout
-            android:id="@+id/map"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="5"></FrameLayout>
+        <ImageView
+            android:layout_width="384dp"
+            android:layout_height="458dp"
+            android:id="@+id/imageView3"
+            android:background="@drawable/rotterdamwapen"
+            android:layout_marginBottom="60dp"
+            android:alpha="0.3"
+            android:layout_gravity="center_horizontal|top" />
     </FrameLayout>
 
 </LinearLayout>
