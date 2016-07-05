@@ -45,61 +45,61 @@ public class DiefBox extends Fragment implements AdapterView.OnItemSelectedListe
 
 
         switch(i){
-            case 1:
+            case 0:
                 fragment = new FragmentGroupedBarChart();
                 showSelectedArea("Charlois");
+                break;
+            case 1:
+                fragment = new FragmentGroupedBarChart();
+                showSelectedArea("DelfsHaven");
                 break;
             case 2:
                 fragment = new FragmentGroupedBarChart();
-                showSelectedArea("Charlois");
+                showSelectedArea("Feijenoord");
                 break;
             case 3:
                 fragment = new FragmentGroupedBarChart();
-                showSelectedArea("Charlois");
+                showSelectedArea("Hillegersberg Schiebroek");
                 break;
             case 4:
                 fragment = new FragmentGroupedBarChart();
-                showSelectedArea("Charlois");
+                showSelectedArea("Hoek van Holland");
                 break;
             case 5:
                 fragment = new FragmentGroupedBarChart();
-                showSelectedArea("Charlois");
+                showSelectedArea("Hoogvliet");
                 break;
             case 6:
                 fragment = new FragmentGroupedBarChart();
-                showSelectedArea("Charlois");
+                showSelectedArea("IJsselmonde");
                 break;
             case 7:
                 fragment = new FragmentGroupedBarChart();
-                showSelectedArea("Charlois");
+                showSelectedArea("Kralingen Crooswijk");
                 break;
             case 8:
                 fragment = new FragmentGroupedBarChart();
-                showSelectedArea("Charlois");
+                showSelectedArea("Noord");
                 break;
             case 9:
                 fragment = new FragmentGroupedBarChart();
-                showSelectedArea("Charlois");
+                showSelectedArea("Overschie");
                 break;
             case 10:
                 fragment = new FragmentGroupedBarChart();
-                showSelectedArea("Charlois");
+                showSelectedArea("Pernis");
                 break;
             case 11:
                 fragment = new FragmentGroupedBarChart();
-                showSelectedArea("Charlois");
+                showSelectedArea("Prins Alexander");
                 break;
             case 12:
                 fragment = new FragmentGroupedBarChart();
-                showSelectedArea("Charlois");
+                showSelectedArea("Centrum");
                 break;
             case 13:
                 fragment = new FragmentGroupedBarChart();
-                showSelectedArea("Charlois");
-                break;
-            case 14:
-                fragment = new FragmentGroupedBarChart();
-                showSelectedArea("Charlois");
+                showSelectedArea("Rozenburg");
                 break;
             default:return;
 
