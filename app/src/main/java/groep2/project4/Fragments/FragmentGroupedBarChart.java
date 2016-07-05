@@ -23,42 +23,55 @@ import groep2.project4.R;
  */
 public class FragmentGroupedBarChart extends Fragment {
 
-    private BarData data;
+    private BarChart chart;
 
     public FragmentGroupedBarChart(){}
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        BarChart barChart = (BarChart)view.findViewById(R.id.FragBarchart);
-        barChart.setData(data);
-        barChart.animateY(5000);
-        barChart.zoom(2,2,50,50);
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ArrayList<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(4f, 1));
-        entries.add(new BarEntry(8f, 2));
-        entries.add(new BarEntry(6f, 3));
-        entries.add(new BarEntry(12f, 4));
-        entries.add(new BarEntry(18f, 5));
-        entries.add(new BarEntry(22f, 6));
-        entries.add(new BarEntry(26f, 7));
-        entries.add(new BarEntry(29f, 8));
+//        ArrayList<BarEntry> entries = new ArrayList<>();
+//        entries.add(new BarEntry(4f, 1));
+//        entries.add(new BarEntry(8f, 2));
+//        entries.add(new BarEntry(6f, 3));
+//        entries.add(new BarEntry(12f, 4));
+//        entries.add(new BarEntry(18f, 5));
+//        entries.add(new BarEntry(22f, 6));
+//        entries.add(new BarEntry(26f, 7));
+//        entries.add(new BarEntry(29f, 8));
 
+    }
 
-        ArrayList<String> labels = new ArrayList<String>();
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        return inflater.inflate(R.layout.fragment_groupedbarchart,container,false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        chart = (BarChart) view.findViewById(R.id.FragGroupBarchart);
+        chart.animateY(5000);
+        chart.zoom(2,2,50,50);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        
+        chart.setData(getUpdatedChartData());
+    }
+
+    private BarData getUpdatedChartData() {
+        ArrayList<String> labels = new ArrayList<>();
         labels.add("January");
         labels.add("February");
         labels.add("March");
         labels.add("April");
         labels.add("May");
         labels.add("June");
-
 
         ArrayList<BarEntry> group1 = new ArrayList<>();
         group1.add(new BarEntry(4f, 1));
@@ -88,13 +101,11 @@ public class FragmentGroupedBarChart extends Fragment {
         dataset.add(barDataSet2);
 
 
-        data=new BarData(labels, dataset);
-
+        return new BarData(labels, dataset);
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        return inflater.inflate(R.layout.fragment_groupedbarchart,container,false);
+    public void onPause() {
+        super.onPause();
     }
 }

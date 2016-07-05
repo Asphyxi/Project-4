@@ -13,10 +13,8 @@
         android:layout_centerHorizontal="true" />
 
     <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/FragGroupBarchart"
+        android:id="@+id/Barchart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="140dp"
-        android:layout_alignParentTop="true" />
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

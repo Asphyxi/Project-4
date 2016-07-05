@@ -30,7 +30,7 @@ public class FragmentBarChart extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        BarChart barChart = (BarChart)view.findViewById(R.id.FragBarchart);
+        BarChart barChart = (BarChart)view.findViewById(R.id.Barchart);
         barChart.setData(data);
         barChart.animateY(5000);
         barChart.zoom(2,2,50,50);
@@ -86,6 +86,6 @@ public class FragmentBarChart extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        return inflater.inflate(R.layout.fragment_groupedbarchart,container,false);
+        return inflater.inflate(R.layout.fragment_barchart,container,false);
     }
 }

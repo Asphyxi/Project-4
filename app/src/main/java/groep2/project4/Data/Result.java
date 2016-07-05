@@ -1,5 +1,8 @@
 package groep2.project4.Data;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+
 public class Result {
 
     public String identifier;
@@ -11,8 +14,8 @@ public class Result {
     }
 
     public String adres;
-    public Double longit;
-    public Double latit;
+    public Double longit; //?
+    public Double latit; // ?
 
     public Result(String adres, Double latit, Double longit){
         this.adres = adres;

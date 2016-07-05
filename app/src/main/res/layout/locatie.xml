@@ -12,7 +12,8 @@
         <FrameLayout
             android:id="@+id/map"
             android:layout_width="match_parent"
-            android:layout_height="350dp"></FrameLayout>
+            android:layout_height="350dp" />
+
         <FrameLayout
         android:id="@+id/mapbottom"
         android:layout_width="match_parent"
