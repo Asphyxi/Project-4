@@ -15,6 +15,8 @@ import android.support.v4.app.Fragment;
 
 import com.google.android.gms.maps.SupportMapFragment;
 
+import groep2.project4.Data.DataProcessor;
+import groep2.project4.Data.InformationRetriever;
 import groep2.project4.Data.LocalDB;
 import groep2.project4.Fragments.FragmentTrommel;
 import groep2.project4.Fragments.Kladblok;
@@ -47,7 +49,14 @@ public class DrawerActivity extends AppCompatActivity
 
         context = getApplicationContext();
         db = new LocalDB(context);
-        db.CreateDB();
+        db.PrepareDB();
+
+        DataProcessor dbTrommel = new DataProcessor(context, "trommels.csv");
+        DataProcessor dbDiefstal = new DataProcessor(context, "diefstal.csv");
+
+        dbTrommel.RetrieveInfo();
+        dbDiefstal.RetrieveInfo();
+
         sMapFragment = SupportMapFragment.newInstance();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

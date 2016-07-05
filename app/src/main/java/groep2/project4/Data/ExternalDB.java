@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class DBConnect implements DataReader {
+public class ExternalDB implements iLocalDatabase {
     private static Connection con;
     private static Statement stmnt;
 
@@ -35,5 +35,19 @@ public class DBConnect implements DataReader {
         return res;
     }
 
+    public void PrepareDB() {
 
+    }
+
+    public void Insert(String table, String columns, String values) {
+
+    }
+
+    public void openDB() {
+
+    }
+
+    public void closeDB() {
+
+    }
 }

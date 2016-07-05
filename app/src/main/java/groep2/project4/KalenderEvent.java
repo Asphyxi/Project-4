@@ -12,9 +12,6 @@ import android.provider.CalendarContract;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 
-/**
- * Created by Gebruiker on 28-6-2016.
- */
 public class KalenderEvent extends AppCompatActivity {
 
     @Override

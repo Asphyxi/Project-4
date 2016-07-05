@@ -23,4 +23,10 @@ public class Result {
         this.longit = longit;
     }
 
+    public Integer maand;
+    public Result(Integer maand, Integer amount) {
+        this.maand = maand;
+        this.amount = amount;
+    }
+
 }

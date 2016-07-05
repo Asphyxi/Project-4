@@ -30,12 +30,10 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Calendar;
-import java.util.List;
+
 
 import groep2.project4.AgendaActivity;
-import groep2.project4.Data.DataProcessor;
-import groep2.project4.Data.InformationRetriever;
-import groep2.project4.Data.Result;
+
 import groep2.project4.R;
 
 public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListener,OnMapReadyCallback {
@@ -59,8 +57,8 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
 
     Calendar calendar = Calendar.getInstance();
 
-    SharedPreferences settings;
-    SharedPreferences.Editor editor;
+//    SharedPreferences settings;
+//    SharedPreferences.Editor editor;
 
     Button reminderbutton;
     Button saveloc;
@@ -78,12 +76,12 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
 
 
 
-        settings = getContext().getSharedPreferences("group2.project4", 0);
-        editor = settings.edit();
+//        settings = getContext().getSharedPreferences("group2.project4", 0);
+//        editor = settings.edit();
 
-        int i = settings.getInt("executed", 0);
-        editor.putInt("executed", i+1);
-        editor.apply();
+//        int i = settings.getInt("executed", 0);
+//        editor.putInt("executed", i+1);
+//        editor.apply();
 
 
         return inflater.inflate(R.layout.locatie, container, false);
@@ -91,11 +89,10 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        askLocPerms();
 
         this.view = view;
         super.onViewCreated(view, savedInstanceState);
-        sFragmentManager = getChildFragmentManager();
+        sFragmentManager = getFragmentManager();
         sFragmentManager.beginTransaction().replace(R.id.map, sMapFragment).commit();
         textViewSelected = (TextView) view.findViewById(R.id.textViewMarker);
         reminderbutton = (Button) view.findViewById(R.id.setReminderButton);
@@ -114,58 +111,57 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
         saveloc = (Button) view.findViewById(R.id.saveloc);
         delloc = (Button) view.findViewById(R.id.delloc);
 
-        saveloc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveLocation();
-            }
-        });
+//        saveloc.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                saveLocation();
+//            }
+//        });
 
     }
 
-
-
-
-
-@Override
-public void onMapReady(GoogleMap googleMap) {
-//        DataProcessor dataProcessor = new DataProcessor(cont, "trommels.csv");
-//        dataProcessor.RetrieveInfo();
-//
-//        List<Result> data = InformationRetriever.getLocations(cont);
-
-        addsavedmarker();
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+    //        DataProcessor dataProcessor = new DataProcessor(cont, "trommels.csv");
+    //        dataProcessor.RetrieveInfo();
+    //
+    //        List<Result> data = InformationRetriever.getLocations(cont);
 
         this.googleMap = googleMap;
+
         googleMap.addMarker(new MarkerOptions()
-        .position(new LatLng(51.922,4.4613))
-        .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
-        .title("poep")
-        .snippet("concept: distance"));
+            .position(new LatLng(51.922,4.4613))
+            .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
+            .title("poep")
+            .snippet("concept: distance"));
 
 
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.909424, 4.488258), 10f));
 
         googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-@Override
-public boolean onMarkerClick(Marker marker) {
+    @Override
+    public boolean onMarkerClick(Marker marker) {
         selectedmarker = marker;
         reminderbutton.setVisibility(View.VISIBLE);
         reminderbutton.setEnabled(true);
         textViewSelected.setText(marker.getTitle());
-        return false;
-        }
-        });
 
-//        for(Result tromtrom:data){
-//            Marker test = googleMap.addMarker(new MarkerOptions()
-//                    .position(new LatLng(tromtrom.latit, tromtrom.longit))
-//                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
-//                    .title(tromtrom.adres)
-//                    .snippet("concept: distance"));
-//        }
-    }
+//        addsavedmarker();
+//        askLocPerms();
+
+            return false;
+            }
+            });
+
+    //        for(Result tromtrom:data){
+    //            Marker test = googleMap.addMarker(new MarkerOptions()
+    //                    .position(new LatLng(tromtrom.latit, tromtrom.longit))
+    //                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
+    //                    .title(tromtrom.adres)
+    //                    .snippet("concept: distance"));
+    //        }
+        }
 
 
     @Override
@@ -198,32 +194,32 @@ public boolean onMarkerClick(Marker marker) {
         }
     }
 
-    public void saveLocation(){
-
-        Location location = googleMap.getMyLocation();
-
-
-        editor.putFloat("latitude", (float) location.getLatitude());
-        editor.putFloat("longitude", (float) location.getLongitude());
-        editor.apply();
-        addsavedmarker();
-    }
-
-    public void delLocation(){
-
-        editor.putFloat("latitude", 0);
-        editor.putFloat("longitude", 0);
-        editor.apply();
-        savedmarker.setAlpha(0);
-    }
-
-    public void addsavedmarker(){
-        savedmarker = googleMap.addMarker(new MarkerOptions()
-                .position(new LatLng(settings.getFloat("latitude", 0),settings.getFloat("longitude", 0)))
-                .title("Opgelsgaen Locatie")
-                .snippet("concept: distance")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-    }
+//    public void saveLocation(){
+//
+//        Location location = googleMap.getMyLocation();
+//
+//
+//        editor.putFloat("latitude", (float) location.getLatitude());
+//        editor.putFloat("longitude", (float) location.getLongitude());
+//        editor.apply();
+//        addsavedmarker();
+//    }
+//
+//    public void delLocation(){
+//
+//        editor.putFloat("latitude", 0);
+//        editor.putFloat("longitude", 0);
+//        editor.apply();
+//        savedmarker.setAlpha(0);
+//    }
+//
+//    public void addsavedmarker(){
+//        savedmarker = googleMap.addMarker(new MarkerOptions()
+//                .position(new LatLng(settings.getFloat("latitude", 0),settings.getFloat("longitude", 0)))
+//                .title("Opgelsgaen Locatie")
+//                .snippet("concept: distance")
+//                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+//    }
 
 
 }
