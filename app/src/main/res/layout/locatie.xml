@@ -39,6 +39,21 @@
                 android:id="@+id/setReminderButton"
                 android:layout_gravity="center_horizontal|bottom" />
 
+            <Button
+                android:layout_width="141dp"
+                android:layout_height="wrap_content"
+                android:text="Verwijder opgeslagen locatie"
+                android:id="@+id/delloc"
+                android:layout_gravity="right|center_vertical"
+                android:background="#ffb8b8" />
+
+            <Button
+                android:layout_width="107dp"
+                android:layout_height="wrap_content"
+                android:text="Sla huidige locatie op"
+                android:id="@+id/saveloc"
+                android:layout_gravity="center" />
+
         </FrameLayout>
 
     </LinearLayout>
