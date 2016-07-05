@@ -18,7 +18,7 @@ import groep2.project4.R;
 public class DiefBox extends Fragment implements AdapterView.OnItemSelectedListener {
     Context cont;
 
-    private static final String[] deelgem = new String[]{"Charlois", "Delfshaven", "Feijenoord",
+    private static final String[] deelgem = new String[]{" ","Charlois", "Delfshaven", "Feijenoord",
             "Hillegersberg Schiebroek", "Hoek van Holland", "Hoogvliet", "IJsselmonde",
             "Kralingen Crooswijk", "Noord", "Overschie", "Pernis", "Prins Alexander", "Centrum",
             "Rozenburg"};
@@ -45,60 +45,60 @@ public class DiefBox extends Fragment implements AdapterView.OnItemSelectedListe
 
 
         switch(i){
-            case 0:
-                fragment = new FragmentGroupedBarChart();
+            case 1:
+                fragment = new FragmentGroupedBarChart("Charlois");
                 showSelectedArea("Charlois");
                 break;
-            case 1:
-                fragment = new FragmentGroupedBarChart();
+            case 2:
+                fragment = new FragmentGroupedBarChart("Delfshaven");
                 showSelectedArea("DelfsHaven");
                 break;
-            case 2:
-                fragment = new FragmentGroupedBarChart();
+            case 3:
+                fragment = new FragmentGroupedBarChart("Feijenoord");
                 showSelectedArea("Feijenoord");
                 break;
-            case 3:
-                fragment = new FragmentGroupedBarChart();
+            case 4:
+                fragment = new FragmentGroupedBarChart("Hillegersberg Schiebroek");
                 showSelectedArea("Hillegersberg Schiebroek");
                 break;
-            case 4:
-                fragment = new FragmentGroupedBarChart();
+            case 5:
+                fragment = new FragmentGroupedBarChart("Hoek van Holland");
                 showSelectedArea("Hoek van Holland");
                 break;
-            case 5:
-                fragment = new FragmentGroupedBarChart();
+            case 6:
+                fragment = new FragmentGroupedBarChart("Hoogvliet");
                 showSelectedArea("Hoogvliet");
                 break;
-            case 6:
-                fragment = new FragmentGroupedBarChart();
+            case 7:
+                fragment = new FragmentGroupedBarChart("IJsselmonde");
                 showSelectedArea("IJsselmonde");
                 break;
-            case 7:
-                fragment = new FragmentGroupedBarChart();
+            case 8:
+                fragment = new FragmentGroupedBarChart("Kralingen Crooswijk");
                 showSelectedArea("Kralingen Crooswijk");
                 break;
-            case 8:
-                fragment = new FragmentGroupedBarChart();
+            case 9:
+                fragment = new FragmentGroupedBarChart("Noord");
                 showSelectedArea("Noord");
                 break;
-            case 9:
-                fragment = new FragmentGroupedBarChart();
+            case 10:
+                fragment = new FragmentGroupedBarChart("Overschie");
                 showSelectedArea("Overschie");
                 break;
-            case 10:
-                fragment = new FragmentGroupedBarChart();
+            case 11:
+                fragment = new FragmentGroupedBarChart("Pernis");
                 showSelectedArea("Pernis");
                 break;
-            case 11:
-                fragment = new FragmentGroupedBarChart();
+            case 12:
+                fragment = new FragmentGroupedBarChart("Prins Alexander");
                 showSelectedArea("Prins Alexander");
                 break;
-            case 12:
-                fragment = new FragmentGroupedBarChart();
+            case 13:
+                fragment = new FragmentGroupedBarChart("Centrum");
                 showSelectedArea("Centrum");
                 break;
-            case 13:
-                fragment = new FragmentGroupedBarChart();
+            case 14:
+                fragment = new FragmentGroupedBarChart("Rozenburg");
                 showSelectedArea("Rozenburg");
                 break;
             default:return;

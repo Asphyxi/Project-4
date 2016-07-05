@@ -15,6 +15,7 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import groep2.project4.R;
 
@@ -24,8 +25,9 @@ import groep2.project4.R;
 public class FragmentGroupedBarChart extends Fragment {
 
     private BarChart chart;
+    private String area;
 
-    public FragmentGroupedBarChart(){}
+    public FragmentGroupedBarChart(String area){this.area = area;}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,30 +67,35 @@ public class FragmentGroupedBarChart extends Fragment {
     }
 
     private BarData getUpdatedChartData() {
-        ArrayList<String> labels = new ArrayList<>();
-        labels.add("January");
-        labels.add("February");
-        labels.add("March");
-        labels.add("April");
-        labels.add("May");
-        labels.add("June");
 
-        ArrayList<BarEntry> group1 = new ArrayList<>();
-        group1.add(new BarEntry(4f, 1));
-        group1.add(new BarEntry(8f, 2));
-        group1.add(new BarEntry(6f, 3));
-        group1.add(new BarEntry(12f, 4));
-        group1.add(new BarEntry(18f, 5));
-        group1.add(new BarEntry(9f, 6));
+            ArrayList<String> labels = new ArrayList<>();
+            labels.add("January");
+            labels.add("February");
+            labels.add("March");
+            labels.add("April");
+            labels.add("May");
+            labels.add("June");
 
-        ArrayList<BarEntry> group2 = new ArrayList<>();
-        group2.add(new BarEntry(6f, 1));
-        group2.add(new BarEntry(7f, 2));
-        group2.add(new BarEntry(8f, 3));
-        group2.add(new BarEntry(12f, 4));
-        group2.add(new BarEntry(15f, 5));
-        group2.add(new BarEntry(10f, 6));
+            ArrayList<BarEntry> group1 = new ArrayList<>();
+        if(area == "Charlois") {
+            group1.add(new BarEntry(4f, 0));
+            group1.add(new BarEntry(8f, 1));
+            group1.add(new BarEntry(6f, 2));
+            group1.add(new BarEntry(12f, 3));
+            group1.add(new BarEntry(18f, 4));
+            group1.add(new BarEntry(20f, 5));
+        }if(area == "Delfshaven"){
 
+        }
+            ArrayList<BarEntry> group2 = new ArrayList<>();
+        if (area == "Charlois"){
+            group2.add(new BarEntry(6f, 0));
+            group2.add(new BarEntry(7f, 1));
+            group2.add(new BarEntry(8f, 2));
+            group2.add(new BarEntry(12f, 3));
+            group2.add(new BarEntry(15f, 4));
+            group2.add(new BarEntry(20f, 5));
+        }
         BarDataSet barDataSet1 = new BarDataSet(group1, "Group 1");
         //barDataSet1.setColor(Color.rgb(0, 155, 0));
         barDataSet1.setColor(Color.GREEN);
