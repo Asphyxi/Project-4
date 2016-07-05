@@ -48,15 +48,15 @@ public class AgendaActivity extends AppCompatActivity implements TimePickerDialo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
         if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_CALENDAR)
-                != PackageManager.PERMISSION_GRANTED) {
-            // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_CALENDAR)) {
-            } else {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.WRITE_CALENDAR},
-                        MY_PERMISSIONS_REQUEST_WRITE_CALENDAR);
-            }
+                    Manifest.permission.WRITE_CALENDAR)
+                    != PackageManager.PERMISSION_GRANTED) {
+                // Should we show an explanation?
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_CALENDAR)) {
+                } else {
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.WRITE_CALENDAR},
+                            MY_PERMISSIONS_REQUEST_WRITE_CALENDAR);
+                }
         } else {
             Button setcustom = (Button) findViewById(R.id.button);
             Button submit = (Button) findViewById(R.id.button2);
