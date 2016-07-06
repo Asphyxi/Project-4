@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import com.google.android.gms.maps.SupportMapFragment;
 
 import groep2.project4.Data.DataProcessor;
-import groep2.project4.Data.LocalDB;
 import groep2.project4.Data.iLocalDatabase;
 import groep2.project4.Fragments.FragmentDiefstal;
 import groep2.project4.Fragments.TrommelFragment;
@@ -42,6 +41,8 @@ public class DrawerActivity extends AppCompatActivity
         setContentView(R.layout.activity_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Database gets prepared and all information is updated
         context = getApplicationContext();
         DBFactory factory = new DBFactory(context);
         db = factory.create();

@@ -49,7 +49,7 @@ public class BrandsPiechartFragment extends Fragment {
 
         List<Result> results = InformationRetriever.getPieChart().get(1);
 
-        for (Result result:results){
+        for (Result result:results){ //Go through all results and add them to the entries
             count++;
             entries.add(new Entry(result.res, count));
             labels.add(result.identifier);

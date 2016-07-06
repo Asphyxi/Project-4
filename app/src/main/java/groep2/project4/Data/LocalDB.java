@@ -21,7 +21,7 @@ public class LocalDB implements iLocalDatabase {
 
     public void PrepareDB() {
         try{
-            thisDB = cont.openOrCreateDatabase("infodb", Context.MODE_PRIVATE, null);
+            thisDB = cont.openOrCreateDatabase("infodb", Context.MODE_PRIVATE, null); //Open or create the database and create the necessary tables if they don't yet exist
             thisDB.execSQL(createdtable);
             thisDB.execSQL(createttable);
         } catch (Exception e) {
@@ -32,22 +32,22 @@ public class LocalDB implements iLocalDatabase {
         }
     }
 
-    public void InsertIntoDiefstal(String key, String deelgemeente, Integer datum, String kleur, String merk) {
+    public void InsertIntoDiefstal(String key, String deelgemeente, Integer datum, String kleur, String merk) { //Function to easily insert information into the diefstal table
         String sql = "INSERT OR IGNORE INTO %s (key, deelgemeente, maand, kleur, merk) VALUES ('%s','%s',%d,'%s','%s')";
         thisDB.execSQL(String.format(Locale.getDefault(), sql, dieftable, key, deelgemeente, datum, kleur, merk));
     }
 
-    public void InsertIntoTrommel(String key, String adres, Double longit, Double latit, String deelgemeente) {
+    public void InsertIntoTrommel(String key, String adres, Double longit, Double latit, String deelgemeente) { //Function to easily insert information into the trommel table
         String sql = "INSERT OR IGNORE INTO %s (key, adres, longit, latit, deelgemeente) VALUES ('%s','%s',%f,%f,'%s')";
         thisDB.execSQL(String.format(Locale.getDefault(), sql, trommeltable, key, adres, longit, latit, deelgemeente));
     }
 
     public void openDB() {
-        thisDB = SQLiteDatabase.openDatabase(cont.getDatabasePath("infodb").getAbsolutePath(), null, Context.MODE_PRIVATE);
+        thisDB = SQLiteDatabase.openDatabase(cont.getDatabasePath("infodb").getAbsolutePath(), null, Context.MODE_PRIVATE); //Opens the database
     }
 
     public void closeDB() {
-        if (thisDB.isOpen()) {
+        if (thisDB.isOpen()) { //Closes the database if it's open
             thisDB.close();
         }
     }

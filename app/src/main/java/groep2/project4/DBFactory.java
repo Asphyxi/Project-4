@@ -21,7 +21,7 @@ public class DBFactory {
         iLocalDatabase database;
         Boolean externaldbworks = false;
 
-        if (externaldbworks) {
+        if (externaldbworks) { //Should only make a externaldb if there's an internet connection, however ExternalDB was never fully implemented due to time constraints
             database = new ExternalDB();
         } else {
             database = new LocalDB(context);

@@ -44,7 +44,7 @@ public class LinechartFragment extends Fragment {
 
         ArrayList<Entry> entries = new ArrayList<>();
 
-        for (Result result:results) {
+        for (Result result:results) { //Go through all results and add them to the entries
             entries.add(new BarEntry(result.res, result.maand -1));
         }
 

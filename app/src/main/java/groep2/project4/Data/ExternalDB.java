@@ -21,7 +21,7 @@ public class ExternalDB implements iLocalDatabase {
     }
     public static int getNumber(String SQL) {
         int res = 0;
-        Log.e("test","Poephoofd");
+        Log.e("test","log");
         try {
             OpenDatabase();
             ResultSet rs = stmnt.executeQuery(SQL);

@@ -21,14 +21,14 @@ public class DataProcessor {
 
     public List<String[]> GetInfo() {
         List<String[]> result;
-        result = CSVReader.ReadFile(myContext, Filename);
+        result = CSVReader.ReadFile(myContext, Filename); //Retrieves all raw data
         return result;
     }
 
     public void ProcessInfo(List<String[]> raw) {
         DB.openDB();
         for (String[] info:raw) {
-            if (Filename.equals("trommels.csv")){
+            if (Filename.equals("trommels.csv")){ //Determine what raw data needs to be taken from the raw results
                 if (!info[0].equals("") && !info[18].equals("") && !info[19].equals(""))
                     try {
                         DB.InsertIntoTrommel(info[0], info[9]+" "+info[10], Double.parseDouble(info[18]), Double.parseDouble(info[19]), info[28]);
@@ -49,6 +49,6 @@ public class DataProcessor {
     }
 
     public void RetrieveInfo() {
-        ProcessInfo(GetInfo());
+        ProcessInfo(GetInfo()); //Combines both functions into 1 easy to use function
     }
 }

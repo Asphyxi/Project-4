@@ -42,7 +42,7 @@ public class GroupedBarchartSpinnerFragment extends Fragment implements AdapterV
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         Fragment fragment;
-        switch(i){
+        switch(i){ //Handle the logic for switching information in the chart
             case 1:
                 fragment = new GroupedBarchartFragment("Charlois");
                 showSelectedArea("Charlois");

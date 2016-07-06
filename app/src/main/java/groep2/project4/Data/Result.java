@@ -1,6 +1,6 @@
 package groep2.project4.Data;
 
-public class Result {
+public class Result { //Custom datatype to hold all results and provide easy access
 
     public String identifier;
     public Integer res;

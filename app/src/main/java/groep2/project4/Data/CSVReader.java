@@ -18,7 +18,7 @@ public class CSVReader implements iDataReader {
         BufferedReader br;
 
         try {
-            is = new InputStreamReader(myContext.getAssets().open(filename));
+            is = new InputStreamReader(myContext.getAssets().open(filename)); //Opens the given file in the assets folder
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -27,8 +27,8 @@ public class CSVReader implements iDataReader {
         br = new BufferedReader(is);
 
         try {
-            br.readLine();
-            while ((line = br.readLine()) != null) {
+            br.readLine(); //Skips header of CSV file
+            while ((line = br.readLine()) != null) { //Go through each line and split them by every ,
                 try {
                     datalist.add(line.split(cvsSplitBy));
                 } catch (Exception e) {
@@ -39,7 +39,7 @@ public class CSVReader implements iDataReader {
             e.printStackTrace();
         } finally {
             try {
-                br.close();
+                br.close(); //Closes the reader
             } catch (IOException e) {
                 e.printStackTrace();
             }

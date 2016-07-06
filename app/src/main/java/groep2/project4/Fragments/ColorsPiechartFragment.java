@@ -48,7 +48,7 @@ public class ColorsPiechartFragment extends Fragment {
         Integer count = -1;
         ArrayList<String> labels = new ArrayList<>();
 
-        for (Result result:results){
+        for (Result result:results){ //Go through all results and add them to the entries
             count++;
             entries.add(new Entry(result.res, count));
             labels.add(result.identifier);

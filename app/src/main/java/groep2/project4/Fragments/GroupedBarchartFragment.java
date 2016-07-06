@@ -57,7 +57,7 @@ public class GroupedBarchartFragment extends Fragment {
         List<Result> trommels = InformationRetriever.getTrommels();
         List<Result> diefstallen = InformationRetriever.getDiefStallen();
 
-        ArrayList<String> labels = new ArrayList<>();
+        ArrayList<String> labels = new ArrayList<>(); //Add all months of the year
         labels.add("January");
         labels.add("February");
         labels.add("March");
@@ -78,22 +78,22 @@ public class GroupedBarchartFragment extends Fragment {
         Result trommelret = null;
         for (Result trommel:trommels) {
             if (trommel != null) {
-                if (trommel.identifier.toLowerCase().equals(area.toLowerCase())) {
+                if (trommel.identifier.toLowerCase().equals(area.toLowerCase())) { //Check if there are fietstrommels with the corresponding deelgemeente
                     trommelret = trommel;
                 }
             }
         }
         if (trommelret == null) {
-            trommelret = legetrommel;
+            trommelret = legetrommel; //If there's no fietstrommels, add an empty one
         }
         for (Result diefstal:diefstallen) {
-            if (diefstal.deelgemeente.toLowerCase().equals(area.toLowerCase())) {
+            if (diefstal.deelgemeente.toLowerCase().equals(area.toLowerCase())) { //Check if there are diefstallen with the corresponding deelgemeenten
                 group2.add(new BarEntry(diefstal.res,diefstal.maand-1));
                 group1.add(new BarEntry(trommelret.res, diefstal.maand-1));
             }
         }
 
-        BarDataSet barDataSet1 = new BarDataSet(group1, "Fietstrommels");
+        BarDataSet barDataSet1 = new BarDataSet(group1, "Fietstrommels"); //Add all datasets
         barDataSet1.setColor(Color.GREEN); BarDataSet barDataSet2 = new BarDataSet(group2, "Fietsdiefstallen");
         barDataSet2.setColor(Color.RED); ArrayList<IBarDataSet> dataset = new ArrayList<>();
         dataset.add(barDataSet1);

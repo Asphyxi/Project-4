@@ -131,7 +131,7 @@ public class LocationFragment extends Fragment implements DatePickerDialog.OnDat
         List<Result> results = InformationRetriever.getLocations();
         Log.e("4","2");
 
-        for (Result result:results) {
+        for (Result result:results) { //Go through all results and add them to the map as markers
             googleMap.addMarker(new MarkerOptions()
                     .position(new LatLng(result.latit,result.longit))
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))

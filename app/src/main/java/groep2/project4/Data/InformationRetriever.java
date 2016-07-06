@@ -17,20 +17,20 @@ public class InformationRetriever {
         List<Result> kleuren = new ArrayList<>();
         List<Result> merken = new ArrayList<>();
 
-        DB.openDB();
+        DB.openDB(); //Opens the database and send it a query
         Cursor c = DB.thisDB.rawQuery("SELECT kleur, count(kleur) as res\n" +
                 "FROM fietsdiefstallen\n" +
                 "WHERE kleur <> '' \n" +
                 "GROUP BY kleur\n",null);
-        c.moveToFirst();
-        if (c.getCount() > 0) {
+        c.moveToFirst(); //Sets the cursor at the first result
+        if (c.getCount() > 0) { //Go through the entire list, and retrieve usefull information
             do {
                 String kleur = c.getString(c.getColumnIndex("kleur"));
                 Integer res = c.getInt(c.getColumnIndex("res"));
                 kleuren.add(new Result(kleur, res));
             } while (c.moveToNext());
         }
-        result.add(kleuren);
+        result.add(kleuren); //Add the results
         c = DB.thisDB.rawQuery("SELECT merk, count(merk) as res\n" +
                 "FROM fietsdiefstallen\n" +
                 "WHERE merk <> '' \n" +
@@ -48,7 +48,7 @@ public class InformationRetriever {
 
         Log.i("Piechart", "Kleuren: " + kleuren.size() + " Merken " + merken.size());
 
-        c.close();
+        c.close(); //Close cursor, db and return all results
         DB.closeDB();
         return result;
     }
