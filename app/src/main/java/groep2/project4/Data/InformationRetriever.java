@@ -53,10 +53,8 @@ public class InformationRetriever {
         return result;
     }
 
-    public static List<List<Result>> getDiefBox() {
-        List<List<Result>> result = new ArrayList<>();
-        List<Result> boxlist = new ArrayList<>();
-        List<Result> dieflist = new ArrayList<>();
+    public static List<Result> getTrommels() {
+        List<Result> result = new ArrayList<>();
 
         DB.openDB();
         Cursor c = DB.thisDB.rawQuery("SELECT deelgemeente, count(deelgemeente) as res\n" +
@@ -68,11 +66,19 @@ public class InformationRetriever {
             do {
                 String deelgemeente = c.getString(c.getColumnIndex("deelgemeente"));
                 Integer res = c.getInt(c.getColumnIndex("res"));
-                boxlist.add(new Result(deelgemeente, res));
+                result.add(new Result(deelgemeente, res));
             } while (c.moveToNext());
         }
+        c.close();
+        DB.closeDB();
+        return result;
+    }
 
-        c = DB.thisDB.rawQuery("select *\n" +
+    public static List<Result> getDiefStallen() {
+        List<Result> result = new ArrayList<>();
+
+        DB.openDB();
+        Cursor c = DB.thisDB.rawQuery("select *\n" +
                 "from(\n" +
                 "select 'Centrum' as deelgemeente, maand, count(maand) as res\n" +
                 "from fietsdiefstallen\n" +
@@ -150,16 +156,11 @@ public class InformationRetriever {
                 String deelgemeente = c.getString(c.getColumnIndex("deelgemeente"));
                 Integer maand = c.getInt(c.getColumnIndex("maand"));
                 Integer res = c.getInt(c.getColumnIndex("res"));
-                dieflist.add(new Result(deelgemeente, maand, res));
+                result.add(new Result(deelgemeente, maand, res));
             } while (c.moveToNext());
         }
         c.close();
         DB.closeDB();
-        result.add(boxlist);
-        result.add(dieflist);
-
-        Log.i("Diefbox", "Boxen " + boxlist.size() + " Diefstallen " + dieflist.size());
-
         return result;
     }
 
@@ -182,9 +183,6 @@ public class InformationRetriever {
         }
         c.close();
         DB.closeDB();
-
-        Log.i("PerMaand", "Maand " + resultlist.size());
-
         return resultlist;
     }
 
@@ -208,9 +206,6 @@ public class InformationRetriever {
         }
         c.close();
         DB.closeDB();
-
-        Log.i("Top5", "Top 5 " + resultlist.size());
-
         return resultlist;
     }
 
@@ -231,9 +226,6 @@ public class InformationRetriever {
         }
         c.close();
         DB.closeDB();
-
-        Log.i("Locations", "Locations " + resultlist.size());
-
         return resultlist;
     }
 }
