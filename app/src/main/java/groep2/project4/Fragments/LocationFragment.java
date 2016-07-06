@@ -210,7 +210,7 @@ public class LocationFragment extends Fragment implements DatePickerDialog.OnDat
     public void addsavedmarker(){
         savedmarker = googleMap.addMarker(new MarkerOptions()
                 .position(new LatLng(settings.getFloat("latitude", 0),settings.getFloat("longitude", 0)))
-                .title("Opgelsgaen Locatie")
+                .title("Opgeslagen Locatie")
                 .snippet("concept: distance")
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
     }
