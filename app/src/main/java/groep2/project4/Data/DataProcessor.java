@@ -11,7 +11,7 @@ public class DataProcessor {
     CSVReader csvReader = null;
     Context myContext;
     String Filename;
-    LocalDB DB = DrawerActivity.getDb();
+    iLocalDatabase DB = DrawerActivity.getDb();
 
     public DataProcessor(Context myContext, String Filename) {
         csvReader = new CSVReader();

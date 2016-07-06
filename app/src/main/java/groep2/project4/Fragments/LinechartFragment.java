@@ -1,13 +1,12 @@
 package groep2.project4.Fragments;
 
 import android.graphics.Color;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.BarEntry;
@@ -23,14 +22,11 @@ import groep2.project4.Data.InformationRetriever;
 import groep2.project4.Data.Result;
 import groep2.project4.R;
 
-/**
- * Created by Dominic on 27-6-2016.
- */
-public class FragmentLineChart extends Fragment {
+public class LinechartFragment extends Fragment {
 
     private LineData data;
 
-    public FragmentLineChart(){}
+    public LinechartFragment(){}
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

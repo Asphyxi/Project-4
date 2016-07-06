@@ -13,9 +13,6 @@ import android.view.ViewGroup;
 
 import groep2.project4.R;
 
-/**
- * Created by Ratan on 7/27/2015.
- */
 public class FragmentDiefstal extends Fragment {
 
     public static TabLayout tabLayout;
@@ -68,9 +65,9 @@ public class FragmentDiefstal extends Fragment {
         public Fragment getItem(int position)
         {
           switch (position){
-              case 0 : return new FragmentLineChart();
-              case 1 : return new FragmentPieChart();
-              case 2 : return new FragmentPieChart2();
+              case 0 : return new LinechartFragment();
+              case 1 : return new ColorsPiechartFragment();
+              case 2 : return new BrandsPiechartFragment();
           }
         return null;
         }

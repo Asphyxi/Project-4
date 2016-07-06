@@ -39,6 +39,16 @@ public class ExternalDB implements iLocalDatabase {
 
     }
 
+    @Override
+    public void InsertIntoDiefstal(String key, String deelgemeente, Integer datum, String kleur, String merk) {
+
+    }
+
+    @Override
+    public void InsertIntoTrommel(String key, String adres, Double longit, Double latit, String deelgemeente) {
+
+    }
+
     public void Insert(String table, String columns, String values) {
 
     }

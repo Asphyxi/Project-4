@@ -1,19 +1,17 @@
 package groep2.project4.Fragments;
 
 import android.graphics.Color;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +20,7 @@ import groep2.project4.Data.InformationRetriever;
 import groep2.project4.Data.Result;
 import groep2.project4.R;
 
-/**
- * Created by Dominic on 27-6-2016.
- */
-public class FragmentPieChart2 extends Fragment {
+public class BrandsPiechartFragment extends Fragment {
     private PieChart pieChart;
     private PieData pieData;
 

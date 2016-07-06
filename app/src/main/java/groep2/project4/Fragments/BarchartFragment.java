@@ -1,10 +1,9 @@
 package groep2.project4.Fragments;
 
 import android.graphics.Color;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,11 +24,11 @@ import groep2.project4.R;
 /**
  * Created by Dominic on 27-6-2016.
  */
-public class FragmentBarChart extends Fragment {
+public class BarchartFragment extends Fragment {
 
     private BarData data;
 
-    public FragmentBarChart(){}
+    public BarchartFragment(){}
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

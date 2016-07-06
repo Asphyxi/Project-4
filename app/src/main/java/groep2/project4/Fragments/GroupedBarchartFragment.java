@@ -1,9 +1,9 @@
 package groep2.project4.Fragments;
 
 import android.graphics.Color;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,18 +16,17 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import groep2.project4.Data.InformationRetriever;
 import groep2.project4.Data.Result;
 import groep2.project4.R;
 
-public class FragmentGroupedBarChart extends Fragment {
+public class GroupedBarchartFragment extends Fragment {
 
     private BarChart chart;
     private String area;
 
-    public FragmentGroupedBarChart(String area){this.area = area;}
+    public GroupedBarchartFragment(String area){this.area = area;}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

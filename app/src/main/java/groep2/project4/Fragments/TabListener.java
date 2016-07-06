@@ -1,12 +1,9 @@
 package groep2.project4.Fragments;
 
-/**
- * Created by Dominic on 28-6-2016.
- */
+import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.app.ActionBar;
 
 import groep2.project4.R;
 

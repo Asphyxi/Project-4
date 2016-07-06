@@ -2,8 +2,9 @@ package groep2.project4;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,28 +12,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v4.app.Fragment;
 
 import com.google.android.gms.maps.SupportMapFragment;
 
 import groep2.project4.Data.DataProcessor;
 import groep2.project4.Data.LocalDB;
-import groep2.project4.Fragments.FragmentTrommel;
-import groep2.project4.Fragments.Kladblok;
-import groep2.project4.Fragments.Locatie;
+import groep2.project4.Data.iLocalDatabase;
 import groep2.project4.Fragments.FragmentDiefstal;
-import groep2.project4.Fragments.Route;
+import groep2.project4.Fragments.TrommelFragment;
+import groep2.project4.Fragments.LocationFragment;
 
 public class DrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener/*, OnMapReadyCallback*/ {
 
     static Context context;
-    static LocalDB db;
+    static iLocalDatabase db;
     MenuColorManager menucolormanager = new MenuColorManager();
 
-    Fragment fragFietsTrommels = new FragmentTrommel();
+    Fragment fragFietsTrommels = new TrommelFragment();
     Fragment fragDiefstallen = new FragmentDiefstal();
-    Fragment fragLocatie = new Locatie();
+    Fragment fragLocatie = new LocationFragment();
 
 
     SupportMapFragment sMapFragment;
@@ -45,12 +44,11 @@ public class DrawerActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         context = getApplicationContext();
-        db = new LocalDB(context);
+        DBFactory factory = new DBFactory(context);
+        db = factory.create();
         db.PrepareDB();
-
         DataProcessor dbTrommel = new DataProcessor(context, "trommels.csv");
         DataProcessor dbDiefstal = new DataProcessor(context, "diefstal.csv");
-
         dbTrommel.RetrieveInfo();
         dbDiefstal.RetrieveInfo();
 
@@ -136,7 +134,7 @@ public class DrawerActivity extends AppCompatActivity
         return true;
     }
 
-    public static LocalDB getDb() {
+    public static iLocalDatabase getDb() {
         return db;
     }
 }

@@ -13,10 +13,7 @@ import android.view.ViewGroup;
 
 import groep2.project4.R;
 
-/**
- * Created by Ratan on 7/27/2015.
- */
-public class FragmentTrommel extends Fragment {
+public class TrommelFragment extends Fragment {
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
@@ -68,8 +65,8 @@ public class FragmentTrommel extends Fragment {
         public Fragment getItem(int position)
         {
             switch (position){
-                case 0 : return new FragmentBarChart();
-                case 1 : return new DiefBox();
+                case 0 : return new BarchartFragment();
+                case 1 : return new GroupedBarchartSpinnerFragment();
             }
             return null;
         }

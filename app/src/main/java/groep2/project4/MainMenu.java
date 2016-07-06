@@ -1,11 +1,9 @@
 package groep2.project4;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-import groep2.project4.Data.LocalDB;
-
-public class Hoofdmenu extends AppCompatActivity {
+public class MainMenu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

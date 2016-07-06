@@ -10,7 +10,7 @@ import groep2.project4.DrawerActivity;
 
 public class InformationRetriever {
 
-    static LocalDB DB = DrawerActivity.getDb();
+    static LocalDB DB = (LocalDB) DrawerActivity.getDb();
 
     public static List<List<Result>> getPieChart() {
         List<List<Result>> result = new ArrayList<>();

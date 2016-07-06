@@ -3,25 +3,28 @@ package groep2.project4;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+
+import groep2.project4.Data.DataProcessor;
 import groep2.project4.Data.ExternalDB;
 import groep2.project4.Data.LocalDB;
 import groep2.project4.Data.iLocalDatabase;
 
 public class DBFactory {
 
-    //TODO: Add permissions for accessing the network state <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    
-    public iLocalDatabase create(Context cont) {
-        iLocalDatabase database;
-        ConnectivityManager cm = (ConnectivityManager)cont.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+    Context context;
 
-        if (activeNetwork.getType()==ConnectivityManager.TYPE_WIFI) {
+    public DBFactory(Context context) {
+        this.context = context;
+    }
+    
+    public iLocalDatabase create() {
+        iLocalDatabase database;
+        Boolean externaldbworks = false;
+
+        if (externaldbworks) {
             database = new ExternalDB();
-            database.PrepareDB();
         } else {
-            database = new LocalDB(cont);
-            database.PrepareDB();
+            database = new LocalDB(context);
         }
         return database;
     }

@@ -1,4 +1,5 @@
 package groep2.project4;
+
 import android.Manifest;
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -6,11 +7,11 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-import groep2.project4.Fragments.Locatie;
+import groep2.project4.Fragments.LocationFragment;
 
 public class AgendaActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
     private static final int MY_PERMISSIONS_REQUEST_WRITE_CALENDAR = 0;
@@ -37,7 +38,7 @@ public class AgendaActivity extends AppCompatActivity implements TimePickerDialo
     private int day;
     private int hour;
     private int minute;
-    Marker selectedmarker = Locatie.getSelectedMarker();
+    Marker selectedmarker = LocationFragment.getSelectedMarker();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

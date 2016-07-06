@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import groep2.project4.R;
 
-public class DiefBox extends Fragment implements AdapterView.OnItemSelectedListener {
+public class GroupedBarchartSpinnerFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     Context cont;
 
     private static final String[] deelgem = new String[]{" ","Charlois", "Delfshaven", "Feijenoord",
@@ -42,63 +42,61 @@ public class DiefBox extends Fragment implements AdapterView.OnItemSelectedListe
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         Fragment fragment;
-
-
         switch(i){
             case 1:
-                fragment = new FragmentGroupedBarChart("Charlois");
+                fragment = new GroupedBarchartFragment("Charlois");
                 showSelectedArea("Charlois");
                 break;
             case 2:
-                fragment = new FragmentGroupedBarChart("Delfshaven");
+                fragment = new GroupedBarchartFragment("Delfshaven");
                 showSelectedArea("DelfsHaven");
                 break;
             case 3:
-                fragment = new FragmentGroupedBarChart("Feijenoord");
+                fragment = new GroupedBarchartFragment("Feijenoord");
                 showSelectedArea("Feijenoord");
                 break;
             case 4:
-                fragment = new FragmentGroupedBarChart("Hillegersberg Schiebroek");
+                fragment = new GroupedBarchartFragment("Hillegersberg Schiebroek");
                 showSelectedArea("Hillegersberg Schiebroek");
                 break;
             case 5:
-                fragment = new FragmentGroupedBarChart("Hoek van Holland");
+                fragment = new GroupedBarchartFragment("Hoek van Holland");
                 showSelectedArea("Hoek van Holland");
                 break;
             case 6:
-                fragment = new FragmentGroupedBarChart("Hoogvliet");
+                fragment = new GroupedBarchartFragment("Hoogvliet");
                 showSelectedArea("Hoogvliet");
                 break;
             case 7:
-                fragment = new FragmentGroupedBarChart("IJsselmonde");
+                fragment = new GroupedBarchartFragment("IJsselmonde");
                 showSelectedArea("IJsselmonde");
                 break;
             case 8:
-                fragment = new FragmentGroupedBarChart("Kralingen Crooswijk");
+                fragment = new GroupedBarchartFragment("Kralingen Crooswijk");
                 showSelectedArea("Kralingen Crooswijk");
                 break;
             case 9:
-                fragment = new FragmentGroupedBarChart("Noord");
+                fragment = new GroupedBarchartFragment("Noord");
                 showSelectedArea("Noord");
                 break;
             case 10:
-                fragment = new FragmentGroupedBarChart("Overschie");
+                fragment = new GroupedBarchartFragment("Overschie");
                 showSelectedArea("Overschie");
                 break;
             case 11:
-                fragment = new FragmentGroupedBarChart("Pernis");
+                fragment = new GroupedBarchartFragment("Pernis");
                 showSelectedArea("Pernis");
                 break;
             case 12:
-                fragment = new FragmentGroupedBarChart("Prins Alexander");
+                fragment = new GroupedBarchartFragment("Prins Alexander");
                 showSelectedArea("Prins Alexander");
                 break;
             case 13:
-                fragment = new FragmentGroupedBarChart("Centrum");
+                fragment = new GroupedBarchartFragment("Centrum");
                 showSelectedArea("Centrum");
                 break;
             case 14:
-                fragment = new FragmentGroupedBarChart("Rozenburg");
+                fragment = new GroupedBarchartFragment("Rozenburg");
                 showSelectedArea("Rozenburg");
                 break;
             default:return;
@@ -108,7 +106,6 @@ public class DiefBox extends Fragment implements AdapterView.OnItemSelectedListe
         fragmentTransaction.replace(R.id.diefbox, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
-
     }
 
     @Override

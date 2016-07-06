@@ -12,7 +12,7 @@ import android.provider.CalendarContract;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 
-public class KalenderEvent extends AppCompatActivity {
+public class CalenderEvent extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {

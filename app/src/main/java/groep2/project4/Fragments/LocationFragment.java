@@ -5,11 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.location.Location;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -32,14 +31,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.Calendar;
 import java.util.List;
 
-
 import groep2.project4.AgendaActivity;
-
 import groep2.project4.Data.InformationRetriever;
 import groep2.project4.Data.Result;
 import groep2.project4.R;
 
-public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListener,OnMapReadyCallback {
+public class LocationFragment extends Fragment implements DatePickerDialog.OnDateSetListener,OnMapReadyCallback {
     Context cont;
     public SupportMapFragment sMapFragment;
     public TextView textViewSelected;
@@ -67,7 +64,7 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.e("Locatie.java", "onCreateView");
+        Log.e("LocationFragment.java", "onCreateView");
         cont = inflater.getContext();
 
         sMapFragment = SupportMapFragment.newInstance();
