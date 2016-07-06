@@ -6,9 +6,6 @@
         <item
             android:id="@+id/fietstrommels"
             android:title="      Fietstrommels" />
-        <item
-            android:id="@+id/route"
-            android:title="      Trommel nabij" />
     </group>
     <item android:title="Diefstallen"
         android:id="@+id/categorie2"/>
@@ -25,16 +22,6 @@
             android:id="@+id/locatie"
             android:title="      Locatie" />
     </group>
-    <item android:title="Kladblok"
-        android:id="@+id/categorie4"/>
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/kladblok"
-            android:title="      kladblok" />
-    </group>
-
-
-
 </menu>
 
 

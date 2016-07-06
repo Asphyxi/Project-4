@@ -16,7 +16,6 @@ import android.support.v4.app.Fragment;
 import com.google.android.gms.maps.SupportMapFragment;
 
 import groep2.project4.Data.DataProcessor;
-import groep2.project4.Data.InformationRetriever;
 import groep2.project4.Data.LocalDB;
 import groep2.project4.Fragments.FragmentTrommel;
 import groep2.project4.Fragments.Kladblok;
@@ -34,8 +33,6 @@ public class DrawerActivity extends AppCompatActivity
     Fragment fragFietsTrommels = new FragmentTrommel();
     Fragment fragDiefstallen = new FragmentDiefstal();
     Fragment fragLocatie = new Locatie();
-    Fragment fragRoute = new Route();
-    Fragment fragKladblok = new Kladblok();
 
 
     SupportMapFragment sMapFragment;
@@ -69,7 +66,7 @@ public class DrawerActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 //        navigationView.setItemTextColor(ColorStateList.valueOf(Color.DKGRAY));
 
-        menucolormanager.HeadingCharts(navigationView.getMenu().findItem(R.id.categorie1),navigationView.getMenu().findItem(R.id.categorie2),navigationView.getMenu().findItem(R.id.categorie3), navigationView.getMenu().findItem(R.id.categorie4));
+        menucolormanager.HeadingCharts(navigationView.getMenu().findItem(R.id.categorie1),navigationView.getMenu().findItem(R.id.categorie2),navigationView.getMenu().findItem(R.id.categorie3));
     }
 
     @Override
@@ -127,10 +124,6 @@ public class DrawerActivity extends AppCompatActivity
             if(!sMapFragment.isAdded()) {
                 sFragmentManager.beginTransaction().add(R.id.map, sMapFragment).commit();
             }else{sFragmentManager.beginTransaction().show(sMapFragment).commit();}
-
-        } else if (id == R.id.route) { fragment = fragRoute;
-
-        } else if (id == R.id.kladblok) { fragment = fragKladblok;
 
         } else {return false;}
 
