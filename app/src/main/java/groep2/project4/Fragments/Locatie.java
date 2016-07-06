@@ -47,11 +47,7 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
 
     GoogleMap googleMap;
     View view;
-    int minute_x = 0;
-    int hour_x = 0;
-    int hour_day = 0;
-    int hour_month = 0;
-    int hour_year = 0;
+    GPSTracker mGPS;
     public static Marker selectedmarker;
 
     public static Marker savedmarker;
@@ -84,6 +80,7 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
         editor.putInt("executed", i+1);
         editor.apply();
 
+        mGPS = new GPSTracker(getContext());
 
         return inflater.inflate(R.layout.locatie, container, false);
     }
@@ -117,6 +114,12 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
             @Override
             public void onClick(View view) {
                 saveLocation();
+            }
+        });
+        delloc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                delLocation();
             }
         });
 
@@ -198,11 +201,10 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
 
     public void saveLocation(){
 
-        Location location = googleMap.getMyLocation();
-
-
-        editor.putFloat("latitude", (float) location.getLatitude());
-        editor.putFloat("longitude", (float) location.getLongitude());
+        mGPS.getLocation();
+        Log.e("shit", Double.toString(mGPS.getLatitude())+ Double.toString(mGPS.getLongitude()));
+        editor.putFloat("latitude", (float) mGPS.getLatitude());
+        editor.putFloat("longitude", (float) mGPS.getLongitude());
         editor.apply();
         addsavedmarker();
     }

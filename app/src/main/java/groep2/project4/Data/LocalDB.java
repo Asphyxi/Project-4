@@ -23,6 +23,8 @@ public class LocalDB implements iLocalDatabase {
     public void PrepareDB() {
         try{
             thisDB = cont.openOrCreateDatabase("infodb", Context.MODE_PRIVATE, null);
+            thisDB.execSQL("DROP TABLE IF EXISTS fietstrommels");
+            thisDB.execSQL("DROP TABLE IF EXISTS fietsdiefstallen");                   //commented because only run once if shit happens
             thisDB.execSQL(createdtable);
             thisDB.execSQL(createttable);
         } catch (Exception e) {

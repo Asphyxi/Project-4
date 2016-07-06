@@ -46,13 +46,13 @@ public class DrawerActivity extends AppCompatActivity
 
         context = getApplicationContext();
         db = new LocalDB(context);
-        db.PrepareDB();
+//        db.PrepareDB();
 
         DataProcessor dbTrommel = new DataProcessor(context, "trommels.csv");
         DataProcessor dbDiefstal = new DataProcessor(context, "diefstal.csv");
 
-        dbTrommel.RetrieveInfo();
-        dbDiefstal.RetrieveInfo();
+//        dbTrommel.RetrieveInfo();
+//        dbDiefstal.RetrieveInfo();
 
         sMapFragment = SupportMapFragment.newInstance();
 
