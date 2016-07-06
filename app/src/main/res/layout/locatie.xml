@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:text="Sla huidige locatie op"
                 android:id="@+id/saveloc"
-                android:layout_gravity="center" />
+                android:layout_gravity="left|center_vertical" />
 
         </FrameLayout>
 
