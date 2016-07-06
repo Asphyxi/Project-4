@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,10 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import groep2.project4.Data.InformationRetriever;
+import groep2.project4.Data.Result;
 import groep2.project4.R;
 
 /**
@@ -39,47 +43,26 @@ public class FragmentBarChart extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        List<Result> results = InformationRetriever.getTop5();
 
         ArrayList<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(4f, 1));
-        entries.add(new BarEntry(8f, 2));
-        entries.add(new BarEntry(6f, 3));
-        entries.add(new BarEntry(12f, 4));
-        entries.add(new BarEntry(18f, 5));
-        entries.add(new BarEntry(22f, 6));
-        entries.add(new BarEntry(26f, 7));
-        entries.add(new BarEntry(29f, 8));
+        Integer count = -1;
+        ArrayList<String> labels = new ArrayList<>();
 
+        for (Result result:results) {
+            count++;
+            entries.add(new BarEntry(result.res, count));
+            labels.add(result.identifier);
+        }
 
-        ArrayList<String> labels = new ArrayList<String>();
-        labels.add("January");
-        labels.add("February");
-        labels.add("March");
-        labels.add("April");
-        labels.add("May");
-        labels.add("June");
-
-
-        ArrayList<BarEntry> group1 = new ArrayList<>();
-        group1.add(new BarEntry(4f, 1));
-        group1.add(new BarEntry(8f, 2));
-        group1.add(new BarEntry(6f, 3));
-        group1.add(new BarEntry(12f, 4));
-        group1.add(new BarEntry(18f, 5));
-        group1.add(new BarEntry(9f, 6));
-
-        BarDataSet barDataSet1 = new BarDataSet(group1, "Group 1");
+        BarDataSet barDataSet1 = new BarDataSet(entries, "Trommels");
         //barDataSet1.setColor(Color.rgb(0, 155, 0));
         barDataSet1.setColor(Color.GREEN);
-
-
 
         ArrayList<IBarDataSet> dataset = new ArrayList<>();
         dataset.add(barDataSet1);
 
-
-
-        data=new BarData(labels, dataset);
+        data=new BarData(labels, barDataSet1);
 
     }
 

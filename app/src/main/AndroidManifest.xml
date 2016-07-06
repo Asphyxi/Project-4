@@ -35,7 +35,7 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyByhhZJrcN0_FD_cDH0KtZZ400_s73RqXI" />
+            android:value="AIzaSyCOCxRbSnkyMr-px8oSQ_42B-fxYQqmxn4" />
 
         <activity android:name=".AgendaActivity"></activity>
     </application>

@@ -46,13 +46,13 @@ public class DrawerActivity extends AppCompatActivity
 
         context = getApplicationContext();
         db = new LocalDB(context);
-//        db.PrepareDB();
+        db.PrepareDB();
 
         DataProcessor dbTrommel = new DataProcessor(context, "trommels.csv");
         DataProcessor dbDiefstal = new DataProcessor(context, "diefstal.csv");
 
-//        dbTrommel.RetrieveInfo();
-//        dbDiefstal.RetrieveInfo();
+        dbTrommel.RetrieveInfo();
+        dbDiefstal.RetrieveInfo();
 
         sMapFragment = SupportMapFragment.newInstance();
 
@@ -139,28 +139,4 @@ public class DrawerActivity extends AppCompatActivity
     public static LocalDB getDb() {
         return db;
     }
-
-//    @Override
-//    public void onMapReady(GoogleMap googleMap) {
-//        //dit is de "initialize" van de map. als de map is geladen, doe dit.
-//        List<Trommel> data = CSVReader.FileReader(this, "trommels.csv");
-//
-//        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.909424, 4.488258),10f));
-//
-//        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-//            @Override
-//            public boolean onMarkerClick(Marker marker) {
-//                Log.e("marker", "clicked " + marker.getTitle());
-//                return false;
-//            }
-//        });
-//
-//        for(Trommel tromtrom:data){
-//            Marker test = googleMap.addMarker(new MarkerOptions()
-//                    .position(new LatLng(tromtrom.longit, tromtrom.latit))
-//                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
-//                    .title(tromtrom.Adres)
-//                    .snippet("concept: distance"));
-//        }
-//    }
 }

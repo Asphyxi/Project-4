@@ -30,10 +30,12 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Calendar;
+import java.util.List;
 
 
 import groep2.project4.AgendaActivity;
 
+import groep2.project4.Data.InformationRetriever;
 import groep2.project4.Data.Result;
 import groep2.project4.R;
 
@@ -127,18 +129,17 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-    //        DataProcessor dataProcessor = new DataProcessor(cont, "trommels.csv");
-    //        dataProcessor.RetrieveInfo();
-    //
-    //        List<Result> data = InformationRetriever.getLocations(cont);
-
+        List<Result> results = InformationRetriever.getLocations();
         this.googleMap = googleMap;
         Log.e("4","2");
-        googleMap.addMarker(new MarkerOptions()
-            .position(new LatLng(51.922,4.4613))
-            .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
-            .title("poep")
-            .snippet("concept: distance"));
+
+        for (Result result:results) {
+            googleMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(result.latit,result.longit))
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
+                    .title(result.adres)
+                    .snippet("concept: distance"));
+        }
 
         Log.e("6","2");
 
@@ -158,14 +159,6 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
         return false;
             }
             });
-//
-//            for(Result tromtrom:data){
-//                Marker test = googleMap.addMarker(new MarkerOptions()
-//                        .position(new LatLng(tromtrom.latit, tromtrom.longit))
-//                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
-//                        .title(tromtrom.adres)
-//                        .snippet("concept: distance"));
-//            }
         }
 
 

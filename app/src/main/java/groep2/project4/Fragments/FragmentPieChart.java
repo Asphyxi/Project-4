@@ -16,7 +16,10 @@ import com.github.mikephil.charting.data.PieDataSet;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
+import groep2.project4.Data.InformationRetriever;
+import groep2.project4.Data.Result;
 import groep2.project4.R;
 
 /**
@@ -37,32 +40,26 @@ public class FragmentPieChart extends Fragment {
 
         pieChart = (PieChart) view.findViewById(R.id.FragPiechart);
         pieChart.setData(pieData); //set pieData into chart
-        pieChart.setDescription("Description 2");
+        pieChart.setDescription("Kleuren");
         pieChart.animateY(1500);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        List<Result> results = InformationRetriever.getPieChart().get(0);
 
         ArrayList<Entry> entries = new ArrayList<>();
-        entries.add(new Entry(9f, 0));
-        entries.add(new Entry(18f, 1));
-        entries.add(new Entry(12f, 2));
-        entries.add(new Entry(6f, 3));
-        entries.add(new Entry(8f, 4));
-        entries.add(new Entry(4f, 5));
+        Integer count = -1;
+        ArrayList<String> labels = new ArrayList<String>();
 
+        for (Result result:results){
+            count++;
+            entries.add(new Entry(result.res, count));
+            labels.add(result.identifier);
+        }
 
         PieDataSet dataSet = new PieDataSet(entries, "# of calls");
-        ArrayList<String> labels = new ArrayList<String>();
-        labels.add("January");
-        labels.add("February");
-        labels.add("March");
-        labels.add("April");
-        labels.add("May");
-        labels.add("June");
-
 
         pieData = new PieData(labels, dataSet);
         dataSet.setColors(My_Colours);
