@@ -1,14 +1,10 @@
 package groep2.project4.Data;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 public class LocalDB implements iLocalDatabase {
@@ -35,11 +31,6 @@ public class LocalDB implements iLocalDatabase {
         } finally {
             thisDB.close();
         }
-    }
-
-    public void Insert(String table, String columns, String values) {
-        String sql = "INSERT INTO %s (%s) VALUES (%S)";
-        thisDB.execSQL(String.format(Locale.getDefault(), sql, table, columns, values));
     }
 
     public void InsertIntoDiefstal(String key, String deelgemeente, Integer datum, String kleur, String merk) {

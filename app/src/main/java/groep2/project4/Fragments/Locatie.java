@@ -34,6 +34,7 @@ import java.util.Calendar;
 
 import groep2.project4.AgendaActivity;
 
+import groep2.project4.Data.Result;
 import groep2.project4.R;
 
 public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListener,OnMapReadyCallback {
@@ -153,14 +154,14 @@ public class Locatie extends Fragment implements DatePickerDialog.OnDateSetListe
             return false;
             }
             });
-
-    //        for(Result tromtrom:data){
-    //            Marker test = googleMap.addMarker(new MarkerOptions()
-    //                    .position(new LatLng(tromtrom.latit, tromtrom.longit))
-    //                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
-    //                    .title(tromtrom.adres)
-    //                    .snippet("concept: distance"));
-    //        }
+//
+//            for(Result tromtrom:data){
+//                Marker test = googleMap.addMarker(new MarkerOptions()
+//                        .position(new LatLng(tromtrom.latit, tromtrom.longit))
+//                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
+//                        .title(tromtrom.adres)
+//                        .snippet("concept: distance"));
+//            }
         }
 
 

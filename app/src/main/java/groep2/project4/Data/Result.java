@@ -1,16 +1,13 @@
 package groep2.project4.Data;
 
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-
 public class Result {
 
     public String identifier;
-    public Integer amount;
+    public Integer res;
 
-    public Result(String identifier, Integer amount) {
+    public Result(String identifier, Integer res) {
         this.identifier = identifier;
-        this.amount = amount;
+        this.res = res;
     }
 
     public String adres;
@@ -24,9 +21,17 @@ public class Result {
     }
 
     public Integer maand;
-    public Result(Integer maand, Integer amount) {
+    public Result(Integer maand, Integer res) {
         this.maand = maand;
-        this.amount = amount;
+        this.res = res;
+    }
+    
+    public String deelgemeente;
+    
+    public Result(String deelgemeente, Integer maand, Integer res) {
+        this.deelgemeente = deelgemeente;
+        this.maand = maand;
+        this.res = res;
     }
 
 }
