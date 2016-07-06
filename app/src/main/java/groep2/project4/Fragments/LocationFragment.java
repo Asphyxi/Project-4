@@ -51,8 +51,6 @@ public class LocationFragment extends Fragment implements DatePickerDialog.OnDat
 
     public static Marker savedmarker;
 
-    Calendar calendar = Calendar.getInstance();
-
     SharedPreferences settings;
     SharedPreferences.Editor editor;
 
@@ -91,11 +89,14 @@ public class LocationFragment extends Fragment implements DatePickerDialog.OnDat
         super.onViewCreated(view, savedInstanceState);
         sFragmentManager = getFragmentManager();
         sFragmentManager.beginTransaction().replace(R.id.maps, sMapFragment).commit();
+
+        //layout stuff
         textViewSelected = (TextView) view.findViewById(R.id.textViewMarker);
         reminderbutton = (Button) view.findViewById(R.id.setReminderButton);
         reminderbutton.setVisibility(View.INVISIBLE);
         reminderbutton.setEnabled(false);
-        Log.e("1","2");
+        saveloc = (Button) view.findViewById(R.id.saveloc);
+        delloc = (Button) view.findViewById(R.id.delloc);
 
           reminderbutton.setOnClickListener(new View.OnClickListener() {
 //
@@ -106,9 +107,7 @@ public class LocationFragment extends Fragment implements DatePickerDialog.OnDat
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getContext().startActivity(intent);}});
 
-        saveloc = (Button) view.findViewById(R.id.saveloc);
-        delloc = (Button) view.findViewById(R.id.delloc);
-        Log.e("3","2");
+        //set the onclicks
         saveloc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,8 +125,10 @@ public class LocationFragment extends Fragment implements DatePickerDialog.OnDat
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        List<Result> results = InformationRetriever.getLocations();
+        //when the map is ready, draw all the markers.
         this.googleMap = googleMap;
+
+        List<Result> results = InformationRetriever.getLocations();
         Log.e("4","2");
 
         for (Result result:results) {
@@ -135,13 +136,10 @@ public class LocationFragment extends Fragment implements DatePickerDialog.OnDat
                     .position(new LatLng(result.latit,result.longit))
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.trommelding))
                     .title(result.adres)
-                    .snippet("concept: distance"));
+                    .snippet(""));
         }
 
-        Log.e("6","2");
-
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.909424, 4.488258), 10f));
-
         googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
     @Override
     public boolean onMarkerClick(Marker marker) {
@@ -149,7 +147,6 @@ public class LocationFragment extends Fragment implements DatePickerDialog.OnDat
         reminderbutton.setVisibility(View.VISIBLE);
         reminderbutton.setEnabled(true);
         textViewSelected.setText(marker.getTitle());
-        Log.e("5","2");
         addsavedmarker();
         askLocPerms();
 
@@ -161,7 +158,6 @@ public class LocationFragment extends Fragment implements DatePickerDialog.OnDat
 
     @Override
     public void onDateSet(DatePickerDialog dialog, int year, int monthOfYear, int dayOfMonth) {
-
     }
 
     public android.app.FragmentManager getSupportFragmentManager() {
@@ -171,11 +167,10 @@ public class LocationFragment extends Fragment implements DatePickerDialog.OnDat
         return selectedmarker;
     }
 
-    public void askLocPerms(){
+    public void askLocPerms(){ //asks for the location permissions
         if (ContextCompat.checkSelfPermission(this.getContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
             } else {
                 ActivityCompat.requestPermissions(this.getActivity(),
@@ -183,31 +178,27 @@ public class LocationFragment extends Fragment implements DatePickerDialog.OnDat
                         MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
             }
         } else {
-
+            //if permitted, setmylocation enabled
             googleMap.setMyLocationEnabled(true);
-
         }
     }
 
-    public void saveLocation(){
-
+    public void saveLocation(){// saves current location
         mGPS.getLocation();
-        Log.e("shit", Double.toString(mGPS.getLatitude())+ Double.toString(mGPS.getLongitude()));
         editor.putFloat("latitude", (float) mGPS.getLatitude());
         editor.putFloat("longitude", (float) mGPS.getLongitude());
         editor.apply();
         addsavedmarker();
     }
 
-    public void delLocation(){
-
+    public void delLocation(){// sort of not really but does delete the marker (to the eye)
         editor.putFloat("latitude", 0);
         editor.putFloat("longitude", 0);
         editor.apply();
         savedmarker.setAlpha(0);
     }
 
-    public void addsavedmarker(){
+    public void addsavedmarker(){//creates the "own location" marker
         savedmarker = googleMap.addMarker(new MarkerOptions()
                 .position(new LatLng(settings.getFloat("latitude", 0),settings.getFloat("longitude", 0)))
                 .title("Opgeslagen Locatie")

@@ -46,7 +46,7 @@ public class AgendaActivity extends AppCompatActivity implements TimePickerDialo
         if (ContextCompat.checkSelfPermission(this,
                     Manifest.permission.WRITE_CALENDAR)
                     != PackageManager.PERMISSION_GRANTED) {
-                // Should we show an explanation?
+                // Check permissions
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_CALENDAR)) {
                 } else {
                     ActivityCompat.requestPermissions(this,

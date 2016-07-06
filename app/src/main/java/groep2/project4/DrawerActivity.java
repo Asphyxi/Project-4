@@ -42,11 +42,12 @@ public class DrawerActivity extends AppCompatActivity
         setContentView(R.layout.activity_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         context = getApplicationContext();
         DBFactory factory = new DBFactory(context);
         db = factory.create();
         db.PrepareDB();
+
+        //access the data
         DataProcessor dbTrommel = new DataProcessor(context, "trommels.csv");
         DataProcessor dbDiefstal = new DataProcessor(context, "diefstal.csv");
         dbTrommel.RetrieveInfo();
@@ -86,9 +87,6 @@ public class DrawerActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
